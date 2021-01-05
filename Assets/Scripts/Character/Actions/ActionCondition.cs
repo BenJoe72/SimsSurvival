@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Linq;
 
-[CreateAssetMenu(fileName = "ActionCondition", menuName = "Actions/ActionCondition")]
+[CreateAssetMenu(fileName = "ActionCondition", menuName = "ButtonActions/ActionCondition")]
 public class ActionCondition : ScriptableObject
 {
     public ConditionElement[] conditionElements;

@@ -5,7 +5,7 @@ using UnityEngine.Events;
 public class ScriptableEventListener : MonoBehaviour
 {
     public ScriptableEvent _Event;
-
+    public int Priority;
     public UnityEvent _Activate;
 
     private void OnEnable()

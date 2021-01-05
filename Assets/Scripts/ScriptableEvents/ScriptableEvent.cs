@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 [CreateAssetMenu(fileName = "Event", menuName = "ScriptableEvents/Event")]
 public class ScriptableEvent : ScriptableObject
 {
     private List<ScriptableEventListener> _listeneres;
+
+    private List<ScriptableEventListener> _orderedListeners;
 
     private void Awake()
     {
@@ -17,6 +20,7 @@ public class ScriptableEvent : ScriptableObject
         if (!_listeneres.Contains(listener))
         {
             _listeneres.Add(listener);
+            _orderedListeners = _listeneres.OrderByDescending(x => x.Priority).ToList();
         }
     }
 
@@ -25,12 +29,13 @@ public class ScriptableEvent : ScriptableObject
         if (_listeneres.Contains(listener))
         {
             _listeneres.Remove(listener);
+            _orderedListeners = _listeneres.OrderByDescending(x => x.Priority).ToList();
         }
     }
 
     public void Invoke()
     {
-        foreach (var listener in _listeneres)
+        foreach (var listener in _orderedListeners)
         {
             listener?.Invoke();
         }

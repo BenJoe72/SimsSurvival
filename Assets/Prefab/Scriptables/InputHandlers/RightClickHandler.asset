@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dadbbb6d8f7aecc4aa5410905ea13594, type: 3}
+  m_Name: RightClickHandler
+  m_EditorClassIdentifier: 
+  HoldTime: 0.1
+  OnPressed: {fileID: 0}
+  OnHold: {fileID: 0}
+  OnReleased: {fileID: 0}
+  OnPressedWithPosition: {fileID: 11400000, guid: 673154cf14b08094fa6247e84caeb271, type: 2}
+  OnHoldWithPosition: {fileID: 0}
+  OnReleasedWithPosition: {fileID: 0}

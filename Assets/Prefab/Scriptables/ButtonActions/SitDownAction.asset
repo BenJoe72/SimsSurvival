@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 885633851a32ca746abfa6b24031e9a1, type: 3}
+  m_Name: SitDownAction
+  m_EditorClassIdentifier: 
+  Name: Sit Down
+  Condition: {fileID: 0}
+  BeginInteractionEvent: {fileID: 11400000, guid: 38e180f598fa04c41914f693f0f81a22, type: 2}
+  InteractionEvent: {fileID: 11400000, guid: 13ce91cb15a524a4584e7ae26b8b1ba9, type: 2}
+  SitDownSpeed: 0.5

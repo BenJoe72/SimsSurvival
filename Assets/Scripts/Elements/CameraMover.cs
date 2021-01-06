@@ -8,7 +8,7 @@ public class CameraMover : MonoBehaviour
 
     public void Move(Vector2 moveVector)
     {
-        Vector3 movement = new Vector3(moveVector.x, 0f, moveVector.y);
+        Vector3 movement = new Vector3(moveVector.x, 0f, moveVector.y).normalized;
         transform.position += movement * MoveSpeed * Time.deltaTime;
     }
 }

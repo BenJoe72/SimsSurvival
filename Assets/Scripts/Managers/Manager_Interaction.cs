@@ -24,12 +24,13 @@ public class Manager_Interaction : MonoBehaviour
 
         _MovementManager.SetDestination(interaction.position, () =>
             {
-                interaction.interactionMethod?.Invoke(_currentCharacter.character, interaction.interactable);
+                interaction.interactionMethod?.Invoke(interaction.character, interaction.interactable);
             });
     }
 
     private void GoToIdle()
     {
+        _currentCharacter.character.mover.EnableNavmesh();
         _currentCharacter.character.animator.SetToIdle();
     }
 }

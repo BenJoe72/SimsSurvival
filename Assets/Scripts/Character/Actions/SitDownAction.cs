@@ -20,6 +20,7 @@ public class SitDownAction : BaseAction
         if (interactable._InteractionPoint != null)
             character.transform.DORotateQuaternion(interactable._InteractionPoint.rotation, SitDownSpeed);
 
+        character.mover.DisableNavmesh();
         character.animator.SitDown();
     }
 }

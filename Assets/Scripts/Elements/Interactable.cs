@@ -7,6 +7,7 @@ public class Interactable : MonoBehaviour
 {
     public List<BaseAction> _Intearctions;
     public Transform _InteractionPoint;
+    public Sprite _Icon;
 
     public UnityEvent InteractedResponse;
 

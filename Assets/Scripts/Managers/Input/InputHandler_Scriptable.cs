@@ -21,7 +21,10 @@ public class InputHandler_Scriptable : ScriptableObject
 
         if (context.performed)
         {
-            OnPressed?.Invoke();
+            // If we are only checking for holding, we don't want to duplicate the first input
+            if (HoldTime > 0)
+                OnPressed?.Invoke();
+
             StartHold();
             result = true;
         }

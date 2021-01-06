@@ -51,4 +51,14 @@ public class Character_Mover : MonoBehaviour
             _StartMovement?.Invoke();
         }
     }
+
+    public void DisableNavmesh()
+    {
+        _nmAgent.enabled = false;
+    }
+
+    public void EnableNavmesh()
+    {
+        _nmAgent.enabled = true;
+    }
 }

@@ -22,6 +22,7 @@ public class BuildMenu_Generator : MonoBehaviour
         {
             BuildMenu_Button newBtn = Instantiate(Prefab, Container);
             newBtn.Element = interactable;
+            if (interactable._Icon != null) newBtn.IconImage.sprite = interactable._Icon;
             _buttons.Add(newBtn);
         }
     }
@@ -32,5 +33,7 @@ public class BuildMenu_Generator : MonoBehaviour
         {
             Destroy(buton.gameObject);
         }
+
+        _buttons.Clear();
     }
 }

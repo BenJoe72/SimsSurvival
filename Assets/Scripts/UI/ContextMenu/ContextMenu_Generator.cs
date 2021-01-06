@@ -8,6 +8,7 @@ public class ContextMenu_Generator : MonoBehaviour
 {
     public ContextMenu_Button _ButtonPrefab;
     public Transform _ContextMenu;
+    public Transform _ClearButton;
 
     private List<ContextMenu_Button> _buttons;
 
@@ -17,7 +18,8 @@ public class ContextMenu_Generator : MonoBehaviour
     private void Start()
     {
         _buttons = new List<ContextMenu_Button>();
-        _ContextMenu.gameObject.SetActive(false);
+
+        Disable();
     }
 
     public void Generate(Interaction interaction)
@@ -70,6 +72,7 @@ public class ContextMenu_Generator : MonoBehaviour
 
         _enabled = true;
         _ContextMenu.gameObject.SetActive(true);
+        _ClearButton.gameObject.SetActive(true);
         transform.position = position;
     }
 
@@ -78,5 +81,6 @@ public class ContextMenu_Generator : MonoBehaviour
         _enabled = false;
         _generated = false;
         _ContextMenu.gameObject.SetActive(false);
+        _ClearButton.gameObject.SetActive(false);
     }
 }

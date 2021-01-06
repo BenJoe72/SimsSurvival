@@ -7,12 +7,15 @@ public class Manager_Click : MonoBehaviour
 {
     public Camera _MainCamera;
     public LayerMask _ClickLayer;
+    public LayerMask _CharacterLayer;
 
     [Header("Events")]
     public Vector2Event _ClickScreenPositionEvent;
     public Vector3Event _HoverPositionEvent;
     public InteractionEvent _ClickInteractionEvent;
-    
+    public CharacterEvent _ClickCharacterEvent;
+    public CharacterEvent _RightClickCharacterEvent;
+
     private CurrentCharacter_Data _currentCharacter;
 
     private int fingerID = -1;
@@ -50,24 +53,58 @@ public class Manager_Click : MonoBehaviour
         }
     }
 
+    public void RightClicked(Vector2 screenPos)
+    {
+        Ray ray = _MainCamera.ScreenPointToRay(screenPos);
+        RaycastHit hit;
+
+        if (!EventSystem.current.IsPointerOverGameObject(fingerID))
+        {
+            if (Physics.Raycast(ray, out hit, float.MaxValue, _CharacterLayer))
+            {
+                CharacterScript character = hit.transform.GetComponent<CharacterScript>();
+
+                if (character != null)
+                {
+                    _RightClickCharacterEvent?.Invoke(character);
+                    return;
+                }
+            }
+        }
+    }
+
     public void Clicked(Vector2 screenPos)
     {
         Ray ray = _MainCamera.ScreenPointToRay(screenPos);
         RaycastHit hit;
 
-        if (!EventSystem.current.IsPointerOverGameObject(fingerID) && Physics.Raycast(ray, out hit, float.MaxValue, _ClickLayer))
+        if (!EventSystem.current.IsPointerOverGameObject(fingerID))
         {
-            Interactable interactable = hit.transform.GetComponent<Interactable>();
-
-            if (interactable != null)
+            if (Physics.Raycast(ray, out hit, float.MaxValue, _CharacterLayer))
             {
-                _ClickScreenPositionEvent?.Invoke(screenPos);
+                CharacterScript character = hit.transform.GetComponent<CharacterScript>();
 
-                Vector3 position = hit.point;
-                if (interactable._InteractionPoint != null)
-                    position = interactable._InteractionPoint.position;
+                if (character != null)
+                {
+                    _ClickCharacterEvent?.Invoke(character);
+                    return;
+                }
+            }
 
-                _ClickInteractionEvent?.Invoke(new Interaction(_currentCharacter.character, interactable, position));
+            if (Physics.Raycast(ray, out hit, float.MaxValue, _ClickLayer))
+            {
+                Interactable interactable = hit.transform.GetComponent<Interactable>();
+
+                if (interactable != null)
+                {
+                    _ClickScreenPositionEvent?.Invoke(screenPos);
+
+                    Vector3 position = hit.point;
+                    if (interactable._InteractionPoint != null)
+                        position = interactable._InteractionPoint.position;
+
+                    _ClickInteractionEvent?.Invoke(new Interaction(_currentCharacter.character, interactable, position));
+                }
             }
         }
     }

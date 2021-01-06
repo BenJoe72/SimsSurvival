@@ -13,8 +13,10 @@ TagManager:
   - UI
   - 
   - 
-  - ClickLayer
+  - Interactable
   - Navmesh
+  - Ground
+  - Character
   - 
   - 
   - 
@@ -34,9 +36,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - CharacterCamera
   m_SortingLayers:
   - name: Default
     uniqueID: 0

@@ -63,6 +63,7 @@ MonoBehaviour:
   _Intearctions:
   - {fileID: 11400000, guid: 7ea18afe673f55d4c99900fa86d6ade6, type: 2}
   _InteractionPoint: {fileID: 0}
+  _Icon: {fileID: 21300000, guid: 13cc109106790fc4cbe90e06899c0bc4, type: 3}
   InteractedResponse:
     m_PersistentCalls:
       m_Calls: []

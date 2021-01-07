@@ -103,7 +103,7 @@ public class Manager_Click : MonoBehaviour
                     if (interactable._InteractionPoint != null)
                         position = interactable._InteractionPoint.position;
 
-                    _ClickInteractionEvent?.Invoke(new Interaction(_currentCharacter.character, interactable, position));
+                    _ClickInteractionEvent?.Invoke(new Interaction(_currentCharacter.character, interactable, position, _currentCharacter.character.Reesources));
                 }
             }
         }

@@ -7,7 +7,7 @@ public class ActionCondition : ScriptableObject
 {
     public ConditionElement[] conditionElements;
 
-    public bool Evaluate(Interaction interaction)
+    public bool Evaluate(Manager_Resource resource)
     {
         var result = conditionElements[0].conneciton == ConditionConnection.And;
 
@@ -17,10 +17,10 @@ public class ActionCondition : ScriptableObject
             {
                 default:
                 case ConditionConnection.And:
-                    result &= element.Evaluate(interaction.character);
+                    result &= element.Evaluate(resource);
                     break;
                 case ConditionConnection.Or:
-                    result |= element.Evaluate(interaction.character);
+                    result |= element.Evaluate(resource);
                     break;
             }
         }
@@ -31,14 +31,14 @@ public class ActionCondition : ScriptableObject
     [System.Serializable]
     public class ConditionElement
     {
-        public Character_DataDefinition definition;
+        public Resource_DataDefinition definition;
         public ConditionConnection conneciton;
         public ConditionOperator cOperator;
         public float value;
 
-        public bool Evaluate(CharacterScript character)
+        public bool Evaluate(Manager_Resource resource)
         {
-            var data = character.data.FirstOrDefault(x => x.definition == definition);
+            var data = resource.data.FirstOrDefault(x => x.definition == definition);
 
             if (data == null)
                 return false;

@@ -11,7 +11,7 @@ public abstract class BaseAction : ScriptableObject
     public InteractionEvent BeginInteractionEvent;
     public InteractionEvent InteractionEvent;
 
-    public virtual bool CanPerform(Interaction interaction) => Condition?.Evaluate(interaction) ?? true;
+    public virtual bool CanPerform(Interaction interaction) => Condition?.Evaluate(interaction.usedResource) ?? true;
 
     public virtual void Activate(Interaction interaction)
     {

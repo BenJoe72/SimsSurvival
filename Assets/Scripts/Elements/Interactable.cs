@@ -8,10 +8,18 @@ public class Interactable : MonoBehaviour
     public List<BaseAction> _Intearctions;
     public Transform _InteractionPoint;
     public Sprite _Icon;
+    public BuildPrice[] _BuildPrice;
+
+    public bool CanBuild { get; private set; }
 
     public UnityEvent InteractedResponse;
 
     private Collider _collider;
+
+    public void EvaluateBuildable(Manager_Resource resource)
+    {
+        CanBuild = resource.HasResources(_BuildPrice);
+    }
 
     private void Awake()
     {

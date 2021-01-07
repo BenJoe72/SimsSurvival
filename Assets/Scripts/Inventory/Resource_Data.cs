@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-public class Character_Data : MonoBehaviour
+public class Resource_Data : MonoBehaviour
 {
-    public Character_DataDefinition definition;
+    public Resource_DataDefinition definition;
     public float currentValue { get; protected set; }
 
     [Header("Events")]

@@ -21,8 +21,7 @@ public class BuildMenu_Generator : MonoBehaviour
         foreach (var interactable in interactables)
         {
             BuildMenu_Button newBtn = Instantiate(Prefab, Container);
-            newBtn.Element = interactable;
-            if (interactable._Icon != null) newBtn.IconImage.sprite = interactable._Icon;
+            newBtn.Intialize(interactable);
             _buttons.Add(newBtn);
         }
     }

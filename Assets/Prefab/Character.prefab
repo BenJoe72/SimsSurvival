@@ -73,6 +73,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 532551668811876170}
+  - component: {fileID: 3423824798375492421}
   m_Layer: 0
   m_Name: Inventory
   m_TagString: Untagged
@@ -92,9 +93,25 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5746792897114625754}
+  - {fileID: 2705803916242848059}
   m_Father: {fileID: 2856654054599076607}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3423824798375492421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449776895743333105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84885fd6497ab8748acea0fb86bceb80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+  - {fileID: 3860574909462577001}
+  - {fileID: 7796985219267038342}
 --- !u!1 &913576049039477765
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,8 +710,7 @@ MonoBehaviour:
   animator: {fileID: 3127106090180550197}
   SelectionIndicator: {fileID: 7211075749305132294}
   ProfileCamera: {fileID: 2051979361766902285}
-  data:
-  - {fileID: 3860574909462577001}
+  Reesources: {fileID: 3423824798375492421}
 --- !u!114 &2856654054599076592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2251,6 +2267,118 @@ Transform:
   m_Father: {fileID: 1986432857959178459}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 17.844818, y: -164.06407, z: -160.43472}
+--- !u!1 &8452798225020464857
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2705803916242848059}
+  - component: {fileID: 7796985219267038342}
+  - component: {fileID: 7727752081476971550}
+  - component: {fileID: 8063261078426571388}
+  m_Layer: 0
+  m_Name: Wood
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2705803916242848059
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8452798225020464857}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 532551668811876170}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7796985219267038342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8452798225020464857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f71f73b3622d54499d1b290dc243342, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  definition: {fileID: 11400000, guid: ce51711b360c2334daf4d35351d3d5c6, type: 2}
+  ValueChanged: {fileID: 0}
+  OnDepleted: {fileID: 0}
+  OnFilled: {fileID: 0}
+  OnZero: {fileID: 0}
+--- !u!114 &7727752081476971550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8452798225020464857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4b2fd696722bd4ba5c591218054845, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Event: {fileID: 11400000, guid: 9368ef33169829143bd7f16b2a108b23, type: 2}
+  Priority: 0
+  _Activate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7796985219267038342}
+        m_TargetAssemblyTypeName: Character_Data, Assembly-CSharp
+        m_MethodName: Add
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  Character: {fileID: 2856654054599076595}
+  Interactable: {fileID: 0}
+--- !u!114 &8063261078426571388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8452798225020464857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4b2fd696722bd4ba5c591218054845, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Event: {fileID: 11400000, guid: 4aecccc53dadce047bfb296117cad512, type: 2}
+  Priority: 0
+  _Activate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7796985219267038342}
+        m_TargetAssemblyTypeName: Character_Data, Assembly-CSharp
+        m_MethodName: Add
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: -1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  Character: {fileID: 2856654054599076595}
+  Interactable: {fileID: 0}
 --- !u!1 &8655033145057581247
 GameObject:
   m_ObjectHideFlags: 0
@@ -2338,7 +2466,7 @@ MonoBehaviour:
     FieldOfView: 60
     OrthographicSize: 5
     NearClipPlane: 0.3
-    FarClipPlane: 2
+    FarClipPlane: 1.5
     Dutch: 0
     LensShift: {x: 0, y: 0}
   m_Transitions:

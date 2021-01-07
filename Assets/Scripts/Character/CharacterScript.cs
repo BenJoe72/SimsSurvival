@@ -10,7 +10,7 @@ public class CharacterScript : MonoBehaviour
     public GameObject SelectionIndicator;
     public CinemachineVirtualCamera ProfileCamera;
 
-    public Character_Data[] data;
+    public Manager_Resource Reesources;
 
     public void Select()
     {

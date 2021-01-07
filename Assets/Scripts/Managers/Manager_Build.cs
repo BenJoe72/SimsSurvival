@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class Manager_Build : MonoBehaviour
 {
     public List<Interactable> Buildables;
+    public Manager_Resource ResourceManager;
 
     [Header("Events")]
     public InteractableListEvent OnShowBuildables;
@@ -23,6 +24,9 @@ public class Manager_Build : MonoBehaviour
 
     public void ShowBuildables()
     {
+        foreach (var bdbl in Buildables)
+            bdbl.EvaluateBuildable(ResourceManager);
+
         OnShowBuildables?.Invoke(Buildables);
     }
 
@@ -49,10 +53,12 @@ public class Manager_Build : MonoBehaviour
         if (!_isBuildling)
             return;
 
+        ResourceManager.PayPrice(_selectedBuildable._BuildPrice);
         OnPlaceBuildable?.Invoke();
         _selectedBuildable.EnableInteraction();
         _selectedBuildable = null;
         _isBuildling = false;
+        ShowBuildables();
     }
 
     public void CancelBuildable()

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bab390dc2b9f8014fae2718bae560ea6, type: 3}
   m_Name: CharacterWood
   m_EditorClassIdentifier: 
-  Name: Food
+  Name: Wood
   icon: {fileID: 0}
   maxValue: 10
   minValue: 0

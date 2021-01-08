@@ -34,7 +34,7 @@ public abstract class TypedScriptableEvent<T> : ScriptableObject
 
     public virtual void Invoke(T value)
     {
-        foreach (var listener in _listeneres)
+        foreach (var listener in _orderedListeners)
         {
             listener?.Invoke(value);
         }

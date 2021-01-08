@@ -18,4 +18,4 @@ MonoBehaviour:
   OnReleased: {fileID: 0}
   OnPressedWithPosition: {fileID: 11400000, guid: efde6d769fcfc2645aec8e729768a51e, type: 2}
   OnHoldWithPosition: {fileID: 0}
-  OnReleasedWithPosition: {fileID: 0}
+  OnReleasedWithPosition: {fileID: 11400000, guid: 6eb2cfa9b8afaea47a7b0569fe761a68, type: 2}

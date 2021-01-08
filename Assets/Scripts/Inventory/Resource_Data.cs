@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 public class Resource_Data : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class Resource_Data : MonoBehaviour
         Add(definition.startingValue);
     }
 
-    public void Add(float value)
+    public virtual void Add(float value)
     {
         currentValue = Mathf.Clamp(currentValue + value, definition.minValue, definition.maxValue);
 
@@ -34,5 +35,20 @@ public class Resource_Data : MonoBehaviour
             OnZero?.Invoke();
 
         ValueChanged?.Invoke(currentValue);
+    }
+
+    public virtual void DropOffResource(Interaction interaction)
+    {
+        Resource_Data cdata = interaction.character.Reesources.data.FirstOrDefault(x => x.definition.Name == definition.Name);
+
+        if (cdata != null)
+            Add(cdata.currentValue);
+        else
+            Debug.LogError("You are trying to drop off a resource type that you don't have.");
+    }
+
+    public void Empty()
+    {
+        Add(-currentValue);
     }
 }

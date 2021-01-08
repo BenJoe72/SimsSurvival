@@ -11,9 +11,12 @@ public class Manager_Resource : MonoBehaviour
     {
         bool result = true;
 
-        foreach (var price in prices)
+        if (prices != null)
         {
-            result &= data.Any(x => x.definition == price.Type && x.currentValue >= price.Value);
+            foreach (var price in prices)
+            {
+                result &= data.Any(x => x.definition == price.Type && x.currentValue >= price.Value);
+            }
         }
 
         return result;

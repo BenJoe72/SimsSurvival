@@ -1,26 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Cinemachine;
+using UnityEngine.Events;
 
 public class CharacterScript : MonoBehaviour
 {
     public Character_Mover mover;
     public Character_Interacter interacter;
     public Character_Animator animator;
-    public GameObject SelectionIndicator;
-    public CinemachineVirtualCamera ProfileCamera;
 
     public Manager_Resource Reesources;
 
+    public UnityEvent OnSelect;
+    public UnityEvent OnDeselect;
+
     public void Select()
     {
-        ProfileCamera.Priority = 100;
-        SelectionIndicator.SetActive(true);
+        OnSelect?.Invoke();
     }
 
     public void Deselect()
     {
-        ProfileCamera.Priority = 1;
-        SelectionIndicator.SetActive(false);
+        OnDeselect?.Invoke();
     }
 }

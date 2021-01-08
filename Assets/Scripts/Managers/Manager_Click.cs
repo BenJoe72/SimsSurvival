@@ -7,16 +7,30 @@ public class Manager_Click : MonoBehaviour
 {
     public Camera _MainCamera;
     public LayerMask _ClickLayer;
+    public LayerMask _GroundLayer;
     public LayerMask _CharacterLayer;
 
     [Header("Events")]
     public Vector2Event _ClickScreenPositionEvent;
     public Vector3Event _HoverPositionEvent;
     public InteractionEvent _ClickInteractionEvent;
+    public InteractableEvent _ClickInteractableEvent;
     public CharacterEvent _ClickCharacterEvent;
     public CharacterEvent _RightClickCharacterEvent;
 
     private CurrentCharacter_Data _currentCharacter;
+
+    // TODO: do something with this later to not be hard-coded 2 states
+    private bool _isEditing;
+    public void EnableEdit()
+    {
+        _isEditing = true;
+    }
+    public void DisableEdit()
+    {
+        _isEditing = false;
+    }
+
 
     private int fingerID = -1;
     private void Awake()
@@ -46,7 +60,7 @@ public class Manager_Click : MonoBehaviour
         Ray ray = _MainCamera.ScreenPointToRay(screenPos);
         RaycastHit hit;
 
-        if (!EventSystem.current.IsPointerOverGameObject(fingerID) && Physics.Raycast(ray, out hit, float.MaxValue, _ClickLayer))
+        if (!EventSystem.current.IsPointerOverGameObject(fingerID) && Physics.Raycast(ray, out hit, float.MaxValue, _isEditing ? _GroundLayer : _ClickLayer))
         {
             _HoverPositionEvent?.Invoke(hit.point);
             _hoverRequested = false;
@@ -103,7 +117,14 @@ public class Manager_Click : MonoBehaviour
                     if (interactable._InteractionPoint != null)
                         position = interactable._InteractionPoint.position;
 
-                    _ClickInteractionEvent?.Invoke(new Interaction(_currentCharacter.character, interactable, position, _currentCharacter.character.Reesources));
+                    if (!_isEditing)
+                    {
+                        _ClickInteractionEvent?.Invoke(new Interaction(_currentCharacter.character, interactable, position, _currentCharacter.character.Reesources));
+                    }
+                    else
+                    {
+                        _ClickInteractableEvent?.Invoke(interactable);
+                    }
                 }
             }
         }

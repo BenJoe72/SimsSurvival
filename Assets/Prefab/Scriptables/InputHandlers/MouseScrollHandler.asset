@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5437183188179414e8fd3b29539ec53f, type: 3}
+  m_Name: MouseScrollHandler
+  m_EditorClassIdentifier: 
+  HoldTime: 0.1
+  OnPressed: {fileID: 0}
+  OnHold: {fileID: 0}
+  OnReleased: {fileID: 0}
+  OnPressedWithValue: {fileID: 11400000, guid: b626b5c149a575d4b909d9d07b485067, type: 2}
+  OnHoldWithValue: {fileID: 0}
+  OnReleasedWithValue: {fileID: 0}

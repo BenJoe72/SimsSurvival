@@ -46,6 +46,7 @@ public class Character_Mover : MonoBehaviour
     {
         if (_nmAgent != null)
         {
+            _arrivedCallback = null;
             _isMoving = true;
             _nmAgent.SetDestination(destionation);
             _StartMovement?.Invoke();

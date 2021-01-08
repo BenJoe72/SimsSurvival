@@ -15,7 +15,7 @@ public class Manager_Movement : MonoBehaviour
 
     public void SetDestination(Vector3 destination, Action callback)
     {
-        _currentCharacter.character.mover.RegisterArriveCallback(callback);
         _currentCharacter.character.mover.SetDestination(destination);
+        _currentCharacter.character.mover.RegisterArriveCallback(callback);
     }
 }

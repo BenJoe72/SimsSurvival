@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94b0323905a0b98439fb42c069522790, type: 3}
   m_Name: DropOffWood
   m_EditorClassIdentifier: 
-  Name: Drop Wood
+  Name: Add Wood
   Condition: {fileID: 11400000, guid: bf2b332bc9ef1be41a44fc2f6f933d19, type: 2}
+  FinishCondition: {fileID: 0}
   BeginInteractionEvent: {fileID: 11400000, guid: 38e180f598fa04c41914f693f0f81a22, type: 2}
   InteractionEvent: {fileID: 11400000, guid: 4aecccc53dadce047bfb296117cad512, type: 2}
+  IsRepeating: 0
+  RepeatDelay: 1
   TurnSpeed: 0.3

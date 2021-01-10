@@ -7,4 +7,9 @@ public static class GameObjectExtentions
     {
         return a_Object.scene.rootCount == 0;
     }
+
+    public static T GetRandom<T>(this T[] array)
+    {
+        return array[UnityEngine.Random.Range(0, array.Length)];
+    }
 }

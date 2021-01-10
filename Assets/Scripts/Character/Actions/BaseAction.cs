@@ -1,15 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using DG.Tweening;
 
 public abstract class BaseAction : ScriptableObject
 {
     public string Name;
 
     public ActionCondition Condition;
+    public ActionCondition FinishCondition;
 
     public InteractionEvent BeginInteractionEvent;
     public InteractionEvent InteractionEvent;
+
+    public bool IsRepeating = false;
+    public float RepeatDelay = 1f;
 
     public virtual bool CanPerform(Interaction interaction) => Condition?.Evaluate(interaction.usedResource) ?? true;
 

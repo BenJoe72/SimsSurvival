@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 885633851a32ca746abfa6b24031e9a1, type: 3}
   m_Name: SitDownAction
   m_EditorClassIdentifier: 
-  Name: Sit Down
+  Name: Sit
   Condition: {fileID: 0}
+  FinishCondition: {fileID: 0}
   BeginInteractionEvent: {fileID: 11400000, guid: 38e180f598fa04c41914f693f0f81a22, type: 2}
   InteractionEvent: {fileID: 11400000, guid: 13ce91cb15a524a4584e7ae26b8b1ba9, type: 2}
+  IsRepeating: 0
+  RepeatDelay: 1
   SitDownSpeed: 0.5

@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b0a731df2ae66448b4b6f04a5776685, type: 3}
   m_Name: MoveAction
   m_EditorClassIdentifier: 
-  Name: Walk Here
+  Name: Walk
+  Condition: {fileID: 0}
+  FinishCondition: {fileID: 0}
   BeginInteractionEvent: {fileID: 11400000, guid: 38e180f598fa04c41914f693f0f81a22, type: 2}
   InteractionEvent: {fileID: 11400000, guid: 5a86dbf1db3cde547917476dc495f26e, type: 2}
+  IsRepeating: 0
+  RepeatDelay: 1

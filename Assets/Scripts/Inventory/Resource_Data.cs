@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Resource_Data : MonoBehaviour
 {
@@ -8,9 +9,9 @@ public class Resource_Data : MonoBehaviour
 
     [Header("Events")]
     public FloatEvent ValueChanged;
-    public ScriptableEvent OnDepleted;
-    public ScriptableEvent OnFilled;
-    public ScriptableEvent OnZero;
+    public UnityEvent OnDepleted;
+    public UnityEvent OnFilled;
+    public UnityEvent OnZero;
 
     public bool IsFull => currentValue == definition.maxValue;
     public bool IsEmpty => currentValue == definition.minValue;

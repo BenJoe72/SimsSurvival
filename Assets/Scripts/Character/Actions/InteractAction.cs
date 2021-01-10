@@ -16,7 +16,7 @@ public class InteractAction : BaseAction
 
     private void InteractActionAnimation(CharacterScript character, Interactable interactable)
     {
-        character.transform.DOLookAt(interactable.transform.position, TurnSpeed);
+        character.transform.DOLookAt(new Vector3(interactable.transform.position.x, character.transform.position.y, interactable.transform.position.z), TurnSpeed);
 
         character.animator.Interact();
         interactable.Interact();

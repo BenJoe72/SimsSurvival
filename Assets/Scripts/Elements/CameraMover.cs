@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraMover : MonoBehaviour
 {
     public float MoveSpeed = 1f;
+    public float ZoomSpeed = 1f;
     public float MinZoom = 1f;
     public float MaxZoom = 10f;
 
@@ -16,7 +17,7 @@ public class CameraMover : MonoBehaviour
 
     public void Zoom(float amount)
     {
-        Vector3 newPos = transform.position + transform.forward * amount * Time.deltaTime;
+        Vector3 newPos = transform.position + transform.forward * amount * ZoomSpeed * Time.deltaTime;
         if (newPos.y > MinZoom && newPos.y < MaxZoom)
             transform.position = newPos;
     }

@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94b0323905a0b98439fb42c069522790, type: 3}
   m_Name: DropOffInventory
   m_EditorClassIdentifier: 
-  Name: Drop Inventory
+  Name: Empty Inventory
   Condition: {fileID: 11400000, guid: cb11061b30fe6b546abccf7393dfaa49, type: 2}
+  FinishCondition: {fileID: 0}
   BeginInteractionEvent: {fileID: 11400000, guid: 38e180f598fa04c41914f693f0f81a22, type: 2}
   InteractionEvent: {fileID: 11400000, guid: 2f6aeb72420d5ed499adff8ae588af3f, type: 2}
+  IsRepeating: 0
+  RepeatDelay: 1
   TurnSpeed: 0.3

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e2ec8a8fe0480f4c82433f6330ddb1c, type: 3}
+  m_Name: SleepAciton
+  m_EditorClassIdentifier: 
+  Name: Sleep
+  Condition: {fileID: 11400000, guid: 1b60b99d45510d94e8159d58046b4a86, type: 2}
+  FinishCondition: {fileID: 11400000, guid: 7543f76a2771abb4da74eaae61f990c3, type: 2}
+  BeginInteractionEvent: {fileID: 11400000, guid: 38e180f598fa04c41914f693f0f81a22, type: 2}
+  InteractionEvent: {fileID: 11400000, guid: ccb4ce5684b682c4da7cd5a728a56735, type: 2}
+  IsRepeating: 1
+  RepeatDelay: 0.5
+  SitDownSpeed: 0.5

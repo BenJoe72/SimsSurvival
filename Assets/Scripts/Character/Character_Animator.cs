@@ -43,8 +43,19 @@ public class Character_Animator : MonoBehaviour
         _animator?.SetBool("Sitting", false);
     }
 
+    public void LayDown()
+    {
+        _animator?.SetBool("Sleeping", true);
+    }
+
+    public void GetUp()
+    {
+        _animator?.SetBool("Sleeping", false);
+    }
+
     internal void SetToIdle()
     {
+        GetUp();
         EndWalk();
         StandUp();
         StopInteract();

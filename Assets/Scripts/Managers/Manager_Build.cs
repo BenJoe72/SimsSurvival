@@ -76,7 +76,6 @@ public class Manager_Build : MonoBehaviour
             return;
 
         ResourceManager.PayPrice(_selectedBuildable._BuildPrice);
-        OnPlaceBuildable?.Invoke();
         _isRotating = true;
     }
 
@@ -88,6 +87,7 @@ public class Manager_Build : MonoBehaviour
             return;
         }
 
+        OnPlaceBuildable?.Invoke();
         _selectedBuildable.EnableInteraction();
         _selectedBuildable = null;
         _isBuildling = false;

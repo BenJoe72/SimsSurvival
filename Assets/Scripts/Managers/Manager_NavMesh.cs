@@ -7,10 +7,9 @@ public class Manager_NavMesh : MonoBehaviour
 {
     private NavMeshSurface _surface;
 
-    private void Start()
+    private void Awake()
     {
         _surface = GetComponent<NavMeshSurface>();
-        Rebake();
     }
     
     public void Rebake()

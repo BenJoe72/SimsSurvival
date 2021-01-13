@@ -9,7 +9,7 @@ public class CharacterScript : MonoBehaviour
     public Character_Interacter interacter;
     public Character_Animator animator;
 
-    public Manager_Resource Reesources;
+    public Manager_Resource Resources;
 
     public UnityEvent OnSelect;
     public UnityEvent OnDeselect;

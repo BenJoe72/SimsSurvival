@@ -1,136 +1,48 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
 public class Manager_Build : MonoBehaviour
 {
-    public List<Interactable> Buildables;
-    public Manager_Resource ResourceManager;
-    public Material BuildMaterial;
+    public FoundationBuildScript FoundationPrefab;
+    public Transform HouseContainer;
+    public int MinFoundationHeight;
+    public int MaxFoundationHeight;
 
-    [Header("Events")]
-    public InteractableListEvent OnShowBuildables;
-    public ScriptableEvent OnRequestHover;
-    public ScriptableEvent OnPlaceBuildable;
+    private FoundationBuildScript _createdFoundation;
+    private float _currentFoundationHeight;
 
-    private Interactable _selectedBuildable;
-
-    private bool _isCreating;
-    private bool _isBuildling;
-    private bool _isRotating;
-    private bool _placedBuilding; // TODO: this is an ugly solution, do something with it
-    private bool _ignoreSetRotation; // TODO: this is an ugly solution, do something with it
-
-    private Vector3 _previousPositon;
-    private Quaternion _previousRotation;
-
-    private void Update()
+    public void StartFoundation(Vector3 position)
     {
-        if (_isBuildling)
-            OnRequestHover?.Invoke();
-
-        _placedBuilding = false;
+        _createdFoundation = Instantiate(FoundationPrefab, HouseContainer);
+        _createdFoundation.RecalculatePosition(position);
+        _currentFoundationHeight = _createdFoundation.transform.position.y;
     }
 
-    public void ShowBuildables()
+    public void DragFoundation(Vector3 position)
     {
-        foreach (var bdbl in Buildables)
-            bdbl.EvaluateBuildable(ResourceManager);
-
-        OnShowBuildables?.Invoke(Buildables);
+        _createdFoundation.RecalculateSize(position);
     }
 
-    public void SelectBuildable(Interactable buildable)
+    public void PlaceFoundation(Vector3 position)
     {
-        if (_isBuildling || _placedBuilding || buildable.Generated)
-            return;
+        _createdFoundation = null;
+    }
 
-        _isCreating = buildable.gameObject.GetIsPrefab();
-        if (_isCreating)
-            _selectedBuildable = Instantiate(buildable, Vector3.down * 100f, Quaternion.identity);
-        else
+    public void RaiseFoundation()
+    {
+        if (_currentFoundationHeight < MaxFoundationHeight)
         {
-            _selectedBuildable = buildable;
-            _previousPositon = buildable.transform.position;
-            _previousRotation = buildable.transform.rotation;
-            _ignoreSetRotation = true;
+            _currentFoundationHeight++;
+            _createdFoundation.RecalculateHeight(_currentFoundationHeight);
         }
-
-        _selectedBuildable.SetMaterial(BuildMaterial);
-        _selectedBuildable.DisableInteraction();
-        _isBuildling = true;
     }
 
-    public void HoverSelectedBuild(Vector3 position)
+    public void LowerFoundation()
     {
-        if (!_isBuildling)
-            return;
-
-        if (!_isRotating)
+        if (_currentFoundationHeight > MinFoundationHeight)
         {
-            _selectedBuildable.transform.position = position;
-            _selectedBuildable.CheckOverLaps();
+            _currentFoundationHeight--;
+            _createdFoundation.RecalculateHeight(_currentFoundationHeight);
         }
-        else
-            _selectedBuildable.transform.LookAt(position);
-    }
-
-    public void PlaceBuildable()
-    {
-        if (!_isBuildling || _selectedBuildable.CheckOverLaps())
-            return;
-
-        ResourceManager.PayPrice(_selectedBuildable.BuildPrice);
-        _isRotating = true;
-    }
-
-    public void SetRotation()
-    {
-        if (_selectedBuildable == null || _ignoreSetRotation || !_isRotating)
-        {
-            _ignoreSetRotation = false;
-            return;
-        }
-
-        OnPlaceBuildable?.Invoke();
-
-        _selectedBuildable.ResetMaterial();
-        _selectedBuildable.EnableInteraction();
-        _selectedBuildable = null;
-        _isBuildling = false;
-        _placedBuilding = true;
-        _isRotating = false;
-        ShowBuildables();
-    }
-
-    public void CancelBuildable()
-    {
-        if (!_isBuildling)
-            return;
-
-        if (_isCreating)
-        {
-            if (_selectedBuildable != null)
-                Destroy(_selectedBuildable.gameObject);
-        }
-        else if (_selectedBuildable != null)
-        {
-            _selectedBuildable.transform.position = _previousPositon;
-            _selectedBuildable.transform.rotation = _previousRotation;
-            _selectedBuildable.EnableInteraction();
-        }
-
-        _selectedBuildable.ResetMaterial();
-        _selectedBuildable = null;
-        _isBuildling = false;
-        _isRotating = false;
-    }
-
-    public void DeleteBuildable()
-    {
-        if (_selectedBuildable != null)
-            Destroy(_selectedBuildable.gameObject);
-
-        CancelBuildable();
     }
 }

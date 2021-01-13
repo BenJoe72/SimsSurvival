@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 44267730}
   - component: {fileID: 44267729}
   m_Layer: 5
-  m_Name: BuildUI
+  m_Name: FurnishUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -203,10 +203,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 44267727}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be25d8f403c8b7a4884a49c75c57749f, type: 3}
+  m_Script: {fileID: 11500000, guid: e89d5ab7e6bb4e94fa69fe75b48046d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Event: {fileID: 11400000, guid: 2bb76a1d82ffdd14e8d78711800056bb, type: 2}
+  _Event: {fileID: 11400000, guid: a368f09d1d10dba4483b5c0b5d6b761e, type: 2}
   Priority: 0
   _Activate:
     m_PersistentCalls:
@@ -223,6 +223,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  CheckState: {fileID: 11400000, guid: 6cfa87d8cb94bdd4cad48f142a277f40, type: 2}
 --- !u!114 &44267730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,10 +233,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 44267727}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be25d8f403c8b7a4884a49c75c57749f, type: 3}
+  m_Script: {fileID: 11500000, guid: e89d5ab7e6bb4e94fa69fe75b48046d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Event: {fileID: 11400000, guid: d080f183194f6614989e7a0a1320b600, type: 2}
+  _Event: {fileID: 11400000, guid: 014d6ac65b96e4240af543045a60e9f5, type: 2}
   Priority: 10
   _Activate:
     m_PersistentCalls:
@@ -252,6 +253,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  CheckState: {fileID: 11400000, guid: 6cfa87d8cb94bdd4cad48f142a277f40, type: 2}
 --- !u!114 &122210662 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2856654054599076595, guid: 7e82cdcfec0917644be2c21a153a7943, type: 3}
@@ -312,7 +314,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 961777713}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &148027252
 MonoBehaviour:
@@ -373,7 +375,7 @@ Transform:
   m_LocalScale: {x: 100, y: 1, z: 100}
   m_Children: []
   m_Father: {fileID: 961777713}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &275461979
 MonoBehaviour:
@@ -1146,20 +1148,20 @@ GameObject:
   - component: {fileID: 497077335}
   - component: {fileID: 497077336}
   - component: {fileID: 497077337}
-  - component: {fileID: 497077338}
+  - component: {fileID: 497077344}
   - component: {fileID: 497077339}
   - component: {fileID: 497077341}
   - component: {fileID: 497077340}
-  - component: {fileID: 497077342}
   - component: {fileID: 497077343}
-  - component: {fileID: 497077344}
+  - component: {fileID: 497077345}
+  - component: {fileID: 497077338}
   m_Layer: 0
-  m_Name: BuildManager
+  m_Name: FurnishManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &497077335
 Transform:
   m_ObjectHideFlags: 0
@@ -1172,7 +1174,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 961777713}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &497077336
 MonoBehaviour:
@@ -1235,16 +1237,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 497077334}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be25d8f403c8b7a4884a49c75c57749f, type: 3}
+  m_Script: {fileID: 11500000, guid: e89d5ab7e6bb4e94fa69fe75b48046d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Event: {fileID: 11400000, guid: d080f183194f6614989e7a0a1320b600, type: 2}
+  _Event: {fileID: 11400000, guid: 014d6ac65b96e4240af543045a60e9f5, type: 2}
   Priority: 0
   _Activate:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 497077336}
-        m_TargetAssemblyTypeName: Manager_Build, Assembly-CSharp
+        m_TargetAssemblyTypeName: Manager_Furnish, Assembly-CSharp
         m_MethodName: ShowBuildables
         m_Mode: 1
         m_Arguments:
@@ -1255,6 +1257,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  CheckState: {fileID: 11400000, guid: 6cfa87d8cb94bdd4cad48f142a277f40, type: 2}
 --- !u!114 &497077339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1296,7 +1299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47706ce1c3be3524cb92dbee5085e423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Event: {fileID: 11400000, guid: 673154cf14b08094fa6247e84caeb271, type: 2}
+  _Event: {fileID: 11400000, guid: b741765587f8b724fa413691b5c088cf, type: 2}
   Priority: 0
   _Activate:
     m_PersistentCalls:
@@ -1325,7 +1328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47706ce1c3be3524cb92dbee5085e423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Event: {fileID: 11400000, guid: 58a72438cdfe5ce4e859db326ebbf53e, type: 2}
+  _Event: {fileID: 11400000, guid: 3e0541d12cb0e7a42b88a0092ded08ee, type: 2}
   Priority: 0
   _Activate:
     m_PersistentCalls:
@@ -1333,35 +1336,6 @@ MonoBehaviour:
       - m_Target: {fileID: 497077336}
         m_TargetAssemblyTypeName: Manager_Build, Assembly-CSharp
         m_MethodName: PlaceBuildable
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &497077342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 497077334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be25d8f403c8b7a4884a49c75c57749f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Event: {fileID: 11400000, guid: 2bb76a1d82ffdd14e8d78711800056bb, type: 2}
-  Priority: 0
-  _Activate:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 497077336}
-        m_TargetAssemblyTypeName: Manager_Build, Assembly-CSharp
-        m_MethodName: CancelBuildable
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1383,7 +1357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47706ce1c3be3524cb92dbee5085e423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Event: {fileID: 11400000, guid: 6eb2cfa9b8afaea47a7b0569fe761a68, type: 2}
+  _Event: {fileID: 11400000, guid: 621a42881076135459a20212ad4a7eb4, type: 2}
   Priority: 0
   _Activate:
     m_PersistentCalls:
@@ -1429,6 +1403,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &497077345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497077334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e89d5ab7e6bb4e94fa69fe75b48046d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Event: {fileID: 11400000, guid: a368f09d1d10dba4483b5c0b5d6b761e, type: 2}
+  Priority: 0
+  _Activate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 497077336}
+        m_TargetAssemblyTypeName: Manager_Furnish, Assembly-CSharp
+        m_MethodName: CancelBuildable
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  CheckState: {fileID: 11400000, guid: 6cfa87d8cb94bdd4cad48f142a277f40, type: 2}
 --- !u!1001 &508777672
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1654,14 +1658,14 @@ GameObject:
   - component: {fileID: 716329706}
   - component: {fileID: 716329705}
   - component: {fileID: 716329704}
-  - component: {fileID: 716329709}
-  - component: {fileID: 716329707}
   - component: {fileID: 716329708}
-  - component: {fileID: 716329711}
-  - component: {fileID: 716329710}
+  - component: {fileID: 716329707}
   - component: {fileID: 716329714}
   - component: {fileID: 716329713}
   - component: {fileID: 716329712}
+  - component: {fileID: 716329711}
+  - component: {fileID: 716329710}
+  - component: {fileID: 716329709}
   m_Layer: 0
   m_Name: ClickManager
   m_TagString: Untagged
@@ -1681,7 +1685,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 961777713}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &716329704
 MonoBehaviour:
@@ -1692,17 +1696,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 716329702}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47706ce1c3be3524cb92dbee5085e423, type: 3}
+  m_Script: {fileID: 11500000, guid: e89d5ab7e6bb4e94fa69fe75b48046d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Event: {fileID: 11400000, guid: efde6d769fcfc2645aec8e729768a51e, type: 2}
+  _Event: {fileID: 11400000, guid: 014d6ac65b96e4240af543045a60e9f5, type: 2}
   Priority: 0
   _Activate:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 716329705}
         m_TargetAssemblyTypeName: Manager_Click, Assembly-CSharp
-        m_MethodName: Clicked
+        m_MethodName: SetState
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1712,6 +1716,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  CheckState: {fileID: 0}
 --- !u!114 &716329705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1724,25 +1729,197 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9475ff25a17bfa4d8a06bd070bef4ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _MainCamera: {fileID: 373988397}
-  _ClickLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  _GroundLayer:
-    serializedVersion: 2
-    m_Bits: 1024
-  _CharacterLayer:
-    serializedVersion: 2
-    m_Bits: 2048
-  _ClickScreenPositionEvent: {fileID: 11400000, guid: 58a72438cdfe5ce4e859db326ebbf53e, type: 2}
-  _HoverPositionEvent: {fileID: 11400000, guid: 10a50e4dfe6cc3c43b116913f56c1f51, type: 2}
-  _ClickInteractionEvent: {fileID: 11400000, guid: 32de74242c5f1ec4cb9fe4ef0840ec28, type: 2}
-  _ClickInteractableEvent: {fileID: 11400000, guid: 3bc5b24a7afbb8f42bb6dac7b625a902, type: 2}
-  _ClickCharacterEvent: {fileID: 11400000, guid: 17dabb824c038e94a9001819f24c0fb9, type: 2}
-  _RightClickCharacterEvent: {fileID: 11400000, guid: 0a5186695b1c7ec49a5f421b41949318, type: 2}
-  _House_ClickDownEvent: {fileID: 11400000, guid: e41bd84d9666f9b42b58b5158c7220ad, type: 2}
-  _House_ClickHoldEvent: {fileID: 11400000, guid: c6e1ea2d37948c34399780133363e990, type: 2}
-  _House_ClickUpEvent: {fileID: 11400000, guid: d66843e9d4da307438be44fb2efd081a, type: 2}
+  MainCamera: {fileID: 373988397}
+  ClickConfigurations:
+  - Name: Live
+    State: {fileID: 11400000, guid: 41754c5897fddab47a720f73e725d8e8, type: 2}
+    HoverEvent: {fileID: 0}
+    ScreenPositionClick:
+      ClickLayer:
+        serializedVersion: 2
+        m_Bits: 0
+      LeftClick:
+        ClickDownEvent: {fileID: 11400000, guid: 58a72438cdfe5ce4e859db326ebbf53e, type: 2}
+        ClickHoldEvent: {fileID: 0}
+        ClickUpEvent: {fileID: 0}
+      RightClick:
+        ClickDownEvent: {fileID: 0}
+        ClickHoldEvent: {fileID: 0}
+        ClickUpEvent: {fileID: 0}
+    PositionClick:
+      ClickLayer:
+        serializedVersion: 2
+        m_Bits: 1280
+      LeftClick:
+        ClickDownEvent: {fileID: 0}
+        ClickHoldEvent: {fileID: 0}
+        ClickUpEvent: {fileID: 0}
+      RightClick:
+        ClickDownEvent: {fileID: 0}
+        ClickHoldEvent: {fileID: 0}
+        ClickUpEvent: {fileID: 0}
+    InteractionClick:
+      ClickLayer:
+        serializedVersion: 2
+        m_Bits: 1280
+      LeftClick:
+        ClickDownEvent: {fileID: 11400000, guid: 32de74242c5f1ec4cb9fe4ef0840ec28, type: 2}
+        ClickHoldEvent: {fileID: 0}
+        ClickUpEvent: {fileID: 0}
+      RightClick:
+        ClickDownEvent: {fileID: 0}
+        ClickHoldEvent: {fileID: 0}
+        ClickUpEvent: {fileID: 0}
+    InteractableClick:
+      ClickLayer:
+        serializedVersion: 2
+        m_Bits: 1280
+      LeftClick:
+        ClickDownEvent: {fileID: 0}
+        ClickHoldEvent: {fileID: 0}
+        ClickUpEvent: {fileID: 0}
+      RightClick:
+        ClickDownEvent: {fileID: 0}
+        ClickHoldEvent: {fileID: 0}
+        ClickUpEvent: {fileID: 0}
+    CharacterClick:
+      ClickLayer:
+        serializedVersion: 2
+        m_Bits: 2048
+      LeftClick:
+        ClickDownEvent: {fileID: 0}
+        ClickHoldEvent: {fileID: 0}
+        ClickUpEvent: {fileID: 0}
+      RightClick:
+        ClickDownEvent: {fileID: 11400000, guid: 0a5186695b1c7ec49a5f421b41949318, type: 2}
+        ClickHoldEvent: {fileID: 0}
+        ClickUpEvent: {fileID: 0}
+  - Name: Furnish
+    State: {fileID: 11400000, guid: 6cfa87d8cb94bdd4cad48f142a277f40, type: 2}
+    HoverEvent: {fileID: 11400000, guid: 10a50e4dfe6cc3c43b116913f56c1f51, type: 2}
+    ScreenPositionClick:
+      ClickLayer:
+        serializedVersion: 2
+        m_Bits: 0
+      LeftClick:
+        ClickDownEvent: {fileID: 11400000, guid: 3e0541d12cb0e7a42b88a0092ded08ee, type: 2}
+        ClickHoldEvent: {fileID: 0}
+        ClickUpEvent: {fileID: 11400000, guid: 621a42881076135459a20212ad4a7eb4, type: 2}
+      RightClick:
+        ClickDownEvent: {fileID: 11400000, guid: b741765587f8b724fa413691b5c088cf, type: 2}
+        ClickHoldEvent: {fileID: 0}
+        ClickUpEvent: {fileID: 0}
+    PositionClick:
+      ClickLayer:
+        serializedVersion: 2
+        m_Bits: 1024
+      LeftClick:
+        ClickDownEvent: {fileID: 0}
+        ClickHoldEvent: {fileID: 0}
+        ClickUpEvent: {fileID: 0}
+      RightClick:
+        ClickDownEvent: {fileID: 0}
+        ClickHoldEvent: {fileID: 0}
+        ClickUpEvent: {fileID: 0}
+    InteractionClick:
+      ClickLayer:
+        serializedVersion: 2
+        m_Bits: 0
+      LeftClick:
+        ClickDownEvent: {fileID: 0}
+        ClickHoldEvent: {fileID: 0}
+        ClickUpEvent: {fileID: 0}
+      RightClick:
+        ClickDownEvent: {fileID: 0}
+        ClickHoldEvent: {fileID: 0}
+        ClickUpEvent: {fileID: 0}
+    InteractableClick:
+      ClickLayer:
+        serializedVersion: 2
+        m_Bits: 256
+      LeftClick:
+        ClickDownEvent: {fileID: 0}
+        ClickHoldEvent: {fileID: 0}
+        ClickUpEvent: {fileID: 0}
+      RightClick:
+        ClickDownEvent: {fileID: 0}
+        ClickHoldEvent: {fileID: 0}
+        ClickUpEvent: {fileID: 0}
+    CharacterClick:
+      ClickLayer:
+        serializedVersion: 2
+        m_Bits: 0
+      LeftClick:
+        ClickDownEvent: {fileID: 0}
+        ClickHoldEvent: {fileID: 0}
+        ClickUpEvent: {fileID: 0}
+      RightClick:
+        ClickDownEvent: {fileID: 0}
+        ClickHoldEvent: {fileID: 0}
+        ClickUpEvent: {fileID: 0}
+  - Name: Build
+    State: {fileID: 11400000, guid: 7433eee0ec5778e4ba212c20ef00c89f, type: 2}
+    HoverEvent: {fileID: 0}
+    ScreenPositionClick:
+      ClickLayer:
+        serializedVersion: 2
+        m_Bits: 0
+      LeftClick:
+        ClickDownEvent: {fileID: 0}
+        ClickHoldEvent: {fileID: 0}
+        ClickUpEvent: {fileID: 0}
+      RightClick:
+        ClickDownEvent: {fileID: 0}
+        ClickHoldEvent: {fileID: 0}
+        ClickUpEvent: {fileID: 0}
+    PositionClick:
+      ClickLayer:
+        serializedVersion: 2
+        m_Bits: 1024
+      LeftClick:
+        ClickDownEvent: {fileID: 11400000, guid: e41bd84d9666f9b42b58b5158c7220ad, type: 2}
+        ClickHoldEvent: {fileID: 11400000, guid: c6e1ea2d37948c34399780133363e990, type: 2}
+        ClickUpEvent: {fileID: 11400000, guid: d66843e9d4da307438be44fb2efd081a, type: 2}
+      RightClick:
+        ClickDownEvent: {fileID: 0}
+        ClickHoldEvent: {fileID: 0}
+        ClickUpEvent: {fileID: 0}
+    InteractionClick:
+      ClickLayer:
+        serializedVersion: 2
+        m_Bits: 0
+      LeftClick:
+        ClickDownEvent: {fileID: 0}
+        ClickHoldEvent: {fileID: 0}
+        ClickUpEvent: {fileID: 0}
+      RightClick:
+        ClickDownEvent: {fileID: 0}
+        ClickHoldEvent: {fileID: 0}
+        ClickUpEvent: {fileID: 0}
+    InteractableClick:
+      ClickLayer:
+        serializedVersion: 2
+        m_Bits: 256
+      LeftClick:
+        ClickDownEvent: {fileID: 0}
+        ClickHoldEvent: {fileID: 0}
+        ClickUpEvent: {fileID: 0}
+      RightClick:
+        ClickDownEvent: {fileID: 0}
+        ClickHoldEvent: {fileID: 0}
+        ClickUpEvent: {fileID: 0}
+    CharacterClick:
+      ClickLayer:
+        serializedVersion: 2
+        m_Bits: 0
+      LeftClick:
+        ClickDownEvent: {fileID: 0}
+        ClickHoldEvent: {fileID: 0}
+        ClickUpEvent: {fileID: 0}
+      RightClick:
+        ClickDownEvent: {fileID: 0}
+        ClickHoldEvent: {fileID: 0}
+        ClickUpEvent: {fileID: 0}
 --- !u!114 &716329706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1828,17 +2005,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 716329702}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47706ce1c3be3524cb92dbee5085e423, type: 3}
+  m_Script: {fileID: 11500000, guid: 53644dc2974356f43a7934791c491024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Event: {fileID: 11400000, guid: 673154cf14b08094fa6247e84caeb271, type: 2}
+  _Event: {fileID: 11400000, guid: f8adf7049c427d54c9cc8fd9639163ea, type: 2}
   Priority: 0
   _Activate:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 716329705}
         m_TargetAssemblyTypeName: Manager_Click, Assembly-CSharp
-        m_MethodName: RightClicked
+        m_MethodName: HandleMouseClick
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1857,18 +2034,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 716329702}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be25d8f403c8b7a4884a49c75c57749f, type: 3}
+  m_Script: {fileID: 11500000, guid: 53644dc2974356f43a7934791c491024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Event: {fileID: 11400000, guid: 32f331f674708ea4395be29494fa51df, type: 2}
+  _Event: {fileID: 11400000, guid: 3b78ad4c39c97fd4db8ee88d49439853, type: 2}
   Priority: 0
   _Activate:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 716329705}
         m_TargetAssemblyTypeName: Manager_Click, Assembly-CSharp
-        m_MethodName: DisableEdit
-        m_Mode: 1
+        m_MethodName: HandleMouseClick
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1886,18 +2063,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 716329702}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be25d8f403c8b7a4884a49c75c57749f, type: 3}
+  m_Script: {fileID: 11500000, guid: 53644dc2974356f43a7934791c491024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Event: {fileID: 11400000, guid: d080f183194f6614989e7a0a1320b600, type: 2}
+  _Event: {fileID: 11400000, guid: f9698052cdfb75b48a5f5420be88037d, type: 2}
   Priority: 0
   _Activate:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 716329705}
         m_TargetAssemblyTypeName: Manager_Click, Assembly-CSharp
-        m_MethodName: EnableEdit
-        m_Mode: 1
+        m_MethodName: HandleMouseClick
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1915,17 +2092,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 716329702}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47706ce1c3be3524cb92dbee5085e423, type: 3}
+  m_Script: {fileID: 11500000, guid: 53644dc2974356f43a7934791c491024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Event: {fileID: 11400000, guid: 6eb2cfa9b8afaea47a7b0569fe761a68, type: 2}
+  _Event: {fileID: 11400000, guid: 8d4694820b3cc6249bab499c649a2347, type: 2}
   Priority: 0
   _Activate:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 716329705}
         m_TargetAssemblyTypeName: Manager_Click, Assembly-CSharp
-        m_MethodName: ButtonUp
+        m_MethodName: HandleMouseClick
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1944,17 +2121,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 716329702}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47706ce1c3be3524cb92dbee5085e423, type: 3}
+  m_Script: {fileID: 11500000, guid: 53644dc2974356f43a7934791c491024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Event: {fileID: 11400000, guid: efde6d769fcfc2645aec8e729768a51e, type: 2}
+  _Event: {fileID: 11400000, guid: 22f8f4869a80d1049b9e4970bb587230, type: 2}
   Priority: 0
   _Activate:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 716329705}
         m_TargetAssemblyTypeName: Manager_Click, Assembly-CSharp
-        m_MethodName: ButtonDown
+        m_MethodName: HandleMouseClick
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1973,17 +2150,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 716329702}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47706ce1c3be3524cb92dbee5085e423, type: 3}
+  m_Script: {fileID: 11500000, guid: 53644dc2974356f43a7934791c491024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Event: {fileID: 11400000, guid: 9928ffbfb66d34b489f1e1dc958b3abd, type: 2}
+  _Event: {fileID: 11400000, guid: 70c72bd1d54f96742918ef577afdbc52, type: 2}
   Priority: 0
   _Activate:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 716329705}
         m_TargetAssemblyTypeName: Manager_Click, Assembly-CSharp
-        m_MethodName: ButtonHold
+        m_MethodName: HandleMouseClick
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2035,7 +2212,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 961777713}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &765430004
 MonoBehaviour:
@@ -2135,7 +2312,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &863118628
 Transform:
   m_ObjectHideFlags: 0
@@ -2148,7 +2325,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 961777713}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &863118629
 MonoBehaviour:
@@ -2442,6 +2619,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1473937129}
   - {fileID: 275461978}
   - {fileID: 497077335}
   - {fileID: 1118705570}
@@ -2450,7 +2628,6 @@ Transform:
   - {fileID: 765430002}
   - {fileID: 148027251}
   - {fileID: 1156712654}
-  - {fileID: 1473937129}
   - {fileID: 1272173090}
   - {fileID: 895670465}
   - {fileID: 1058512509}
@@ -2503,7 +2680,7 @@ GameObject:
   - component: {fileID: 1058512515}
   - component: {fileID: 1058512514}
   m_Layer: 0
-  m_Name: HouseManager
+  m_Name: BuildManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2979,6 +3156,90 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 7f19b784-4e03-4a53-9845-c8894f4f22a3
     m_ActionName: KeyboardMouse/New action
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1118705571}
+        m_TargetAssemblyTypeName: Manager_Input, Assembly-CSharp
+        m_MethodName: SetContext
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1118705571}
+        m_TargetAssemblyTypeName: Manager_Input, Assembly-CSharp
+        m_MethodName: HandleInput
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 439e773c449223c4193fc0465c4c20ba, type: 2}
+          m_ObjectArgumentAssemblyTypeName: InputHandler_Scriptable, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 409c6122-90c3-422d-b635-e173ec432516
+    m_ActionName: KeyboardMouse/F1[/Keyboard/f1]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1118705571}
+        m_TargetAssemblyTypeName: Manager_Input, Assembly-CSharp
+        m_MethodName: SetContext
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1118705571}
+        m_TargetAssemblyTypeName: Manager_Input, Assembly-CSharp
+        m_MethodName: HandleInput
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 705940f08fc66224f9075eb181153dbf, type: 2}
+          m_ObjectArgumentAssemblyTypeName: InputHandler_Scriptable, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 705e08b9-9b68-45c9-9f3b-17ec688d25c5
+    m_ActionName: KeyboardMouse/F2[/Keyboard/f2]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1118705571}
+        m_TargetAssemblyTypeName: Manager_Input, Assembly-CSharp
+        m_MethodName: SetContext
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1118705571}
+        m_TargetAssemblyTypeName: Manager_Input, Assembly-CSharp
+        m_MethodName: HandleInput
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 9cb337fb825f91f43a87a587396d103b, type: 2}
+          m_ObjectArgumentAssemblyTypeName: InputHandler_Scriptable, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9bb2f757-5fe6-4f4d-8656-5f4dfabb24a5
+    m_ActionName: KeyboardMouse/F3[/Keyboard/f3]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: KeyboardMouse
@@ -2996,7 +3257,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 961777713}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1118705571
 MonoBehaviour:
@@ -3147,7 +3408,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 961777713}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1156712655
 MonoBehaviour:
@@ -3939,9 +4200,9 @@ GameObject:
   - component: {fileID: 1473937129}
   - component: {fileID: 1473937130}
   - component: {fileID: 1473937132}
-  - component: {fileID: 1473937131}
   - component: {fileID: 1473937134}
   - component: {fileID: 1473937133}
+  - component: {fileID: 1473937131}
   m_Layer: 0
   m_Name: GameStateManager
   m_TagString: Untagged
@@ -3961,7 +4222,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 961777713}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1473937130
 Animator:
@@ -3994,18 +4255,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be25d8f403c8b7a4884a49c75c57749f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Event: {fileID: 11400000, guid: ebf9c6d15f242ab4596742fb235eacac, type: 2}
+  _Event: {fileID: 11400000, guid: 306c3b3417fde9640a4bbae35c6eaa9c, type: 2}
   Priority: 0
   _Activate:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1473937132}
         m_TargetAssemblyTypeName: Manager_GameState, Assembly-CSharp
-        m_MethodName: SwitchMode
-        m_Mode: 1
+        m_MethodName: SwitchState
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: 7433eee0ec5778e4ba212c20ef00c89f, type: 2}
+          m_ObjectArgumentAssemblyTypeName: GameState, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4023,6 +4284,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae42aa7850535954084924a7260bcac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameStates:
+  - {fileID: 11400000, guid: 7433eee0ec5778e4ba212c20ef00c89f, type: 2}
+  - {fileID: 11400000, guid: 6cfa87d8cb94bdd4cad48f142a277f40, type: 2}
+  - {fileID: 11400000, guid: 41754c5897fddab47a720f73e725d8e8, type: 2}
 --- !u!114 &1473937133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4032,11 +4297,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 1473937128}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2a4c5e732445694ab2f98a056924606, type: 3}
+  m_Script: {fileID: 11500000, guid: be25d8f403c8b7a4884a49c75c57749f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnEnterState: {fileID: 11400000, guid: 32f331f674708ea4395be29494fa51df, type: 2}
-  OnExitState: {fileID: 11400000, guid: b16d21ba1c99975498ee77a965615d70, type: 2}
+  _Event: {fileID: 11400000, guid: 3a31cff3db6fd91429016138c372a172, type: 2}
+  Priority: 0
+  _Activate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1473937132}
+        m_TargetAssemblyTypeName: Manager_GameState, Assembly-CSharp
+        m_MethodName: SwitchState
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 6cfa87d8cb94bdd4cad48f142a277f40, type: 2}
+          m_ObjectArgumentAssemblyTypeName: GameState, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1473937134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4046,11 +4326,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 1473937128}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb2d406a1f8fd684aadb671d1f81fcbe, type: 3}
+  m_Script: {fileID: 11500000, guid: be25d8f403c8b7a4884a49c75c57749f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnEnterState: {fileID: 11400000, guid: d080f183194f6614989e7a0a1320b600, type: 2}
-  OnExitState: {fileID: 11400000, guid: 2bb76a1d82ffdd14e8d78711800056bb, type: 2}
+  _Event: {fileID: 11400000, guid: 4622bdf1bfcdb1a4cb852c146807e68d, type: 2}
+  Priority: 0
+  _Activate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1473937132}
+        m_TargetAssemblyTypeName: Manager_GameState, Assembly-CSharp
+        m_MethodName: SwitchState
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 41754c5897fddab47a720f73e725d8e8, type: 2}
+          m_ObjectArgumentAssemblyTypeName: GameState, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &1486258533 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2054779079978541147, guid: 7e38a883c4d8add4c8d2c314cb81dd8e, type: 3}
@@ -4070,7 +4365,7 @@ GameObject:
   - component: {fileID: 1553162559}
   - component: {fileID: 1553162560}
   m_Layer: 5
-  m_Name: BuildMenu
+  m_Name: FurnishMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5095,7 +5390,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1857280546
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5125,10 +5420,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1857280545}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be25d8f403c8b7a4884a49c75c57749f, type: 3}
+  m_Script: {fileID: 11500000, guid: e89d5ab7e6bb4e94fa69fe75b48046d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Event: {fileID: 11400000, guid: b16d21ba1c99975498ee77a965615d70, type: 2}
+  _Event: {fileID: 11400000, guid: a368f09d1d10dba4483b5c0b5d6b761e, type: 2}
   Priority: 0
   _Activate:
     m_PersistentCalls:
@@ -5145,6 +5440,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  CheckState: {fileID: 11400000, guid: 41754c5897fddab47a720f73e725d8e8, type: 2}
 --- !u!114 &1857280548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5154,10 +5450,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1857280545}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be25d8f403c8b7a4884a49c75c57749f, type: 3}
+  m_Script: {fileID: 11500000, guid: e89d5ab7e6bb4e94fa69fe75b48046d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Event: {fileID: 11400000, guid: 32f331f674708ea4395be29494fa51df, type: 2}
+  _Event: {fileID: 11400000, guid: 014d6ac65b96e4240af543045a60e9f5, type: 2}
   Priority: 0
   _Activate:
     m_PersistentCalls:
@@ -5174,6 +5470,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  CheckState: {fileID: 11400000, guid: 41754c5897fddab47a720f73e725d8e8, type: 2}
 --- !u!1 &1983168510
 GameObject:
   m_ObjectHideFlags: 0

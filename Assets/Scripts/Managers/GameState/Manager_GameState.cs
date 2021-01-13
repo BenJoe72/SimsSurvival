@@ -4,6 +4,8 @@ using System.Collections;
 [RequireComponent(typeof(Animator))]
 public class Manager_GameState : MonoBehaviour
 {
+    public GameState[] GameStates;
+
     private Animator _animator;
 
     private void Start()
@@ -11,11 +13,11 @@ public class Manager_GameState : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    private bool isBuild;
-
-    public void SwitchMode()
+    public void SwitchState(GameState newState)
     {
-        isBuild = !isBuild;
-        _animator.SetBool("Build", isBuild);
+        foreach (var state in GameStates)
+        {
+            _animator.SetBool(state.Name, state == newState);
+        }
     }
 }

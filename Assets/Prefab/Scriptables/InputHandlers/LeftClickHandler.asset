@@ -16,6 +16,7 @@ MonoBehaviour:
   OnPressed: {fileID: 0}
   OnHold: {fileID: 0}
   OnReleased: {fileID: 0}
-  OnPressedWithPosition: {fileID: 11400000, guid: efde6d769fcfc2645aec8e729768a51e, type: 2}
-  OnHoldWithPosition: {fileID: 11400000, guid: 9928ffbfb66d34b489f1e1dc958b3abd, type: 2}
-  OnReleasedWithPosition: {fileID: 11400000, guid: 6eb2cfa9b8afaea47a7b0569fe761a68, type: 2}
+  Button: 0
+  OnPressedWithPosition: {fileID: 11400000, guid: 70c72bd1d54f96742918ef577afdbc52, type: 2}
+  OnHoldWithPosition: {fileID: 11400000, guid: 22f8f4869a80d1049b9e4970bb587230, type: 2}
+  OnReleasedWithPosition: {fileID: 11400000, guid: 8d4694820b3cc6249bab499c649a2347, type: 2}

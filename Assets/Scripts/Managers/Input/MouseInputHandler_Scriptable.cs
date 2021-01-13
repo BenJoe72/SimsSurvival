@@ -6,17 +6,19 @@ using UnityEngine.InputSystem;
 [CreateAssetMenu(fileName = "MouseInputHandler", menuName = "Configurations/Input/MouseInputHandler")]
 public class MouseInputHandler_Scriptable: InputHandler_Scriptable
 {
-    public Vector2Event OnPressedWithPosition;
-    public Vector2Event OnHoldWithPosition;
-    public Vector2Event OnReleasedWithPosition;
+    public MouseButton Button;
+
+    public MouseClickDataEvent OnPressedWithPosition;
+    public MouseClickDataEvent OnHoldWithPosition;
+    public MouseClickDataEvent OnReleasedWithPosition;
 
     public override bool HandleRawInput(CallbackContext context)
     {
         if (context.performed)
-            OnPressedWithPosition?.Invoke(Mouse.current.position.ReadValue());
-        
+            OnPressedWithPosition?.Invoke(new MouseClickData(MouseEventType.DOWN, Button, Mouse.current.position.ReadValue()));
+
         if (context.canceled)
-            OnReleasedWithPosition?.Invoke(Mouse.current.position.ReadValue());
+            OnReleasedWithPosition?.Invoke(new MouseClickData(MouseEventType.UP, Button, Mouse.current.position.ReadValue()));
 
         return base.HandleRawInput(context);
     }
@@ -26,6 +28,6 @@ public class MouseInputHandler_Scriptable: InputHandler_Scriptable
         base.Hold();
 
         if (_holdTimer >= HoldTime)
-            OnHoldWithPosition?.Invoke(Mouse.current.position.ReadValue());
+            OnHoldWithPosition?.Invoke(new MouseClickData(MouseEventType.HOLD, Button, Mouse.current.position.ReadValue()));
     }
 }

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3286bdd541f780d46a9b8ae2a8590bbf, type: 3}
+  m_Name: F3KeyHandler
+  m_EditorClassIdentifier: 
+  HoldTime: 1
+  OnPressed: {fileID: 11400000, guid: 306c3b3417fde9640a4bbae35c6eaa9c, type: 2}
+  OnHold: {fileID: 0}
+  OnReleased: {fileID: 0}

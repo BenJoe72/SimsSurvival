@@ -35,7 +35,7 @@ public class Manager_Interaction : MonoBehaviour
             }
 
             // The interactable can be destoryed during interaction that's why we check again
-            if (rInt.interactable == null || (rInt.action.FinishCondition != null && rInt.action.FinishCondition.Evaluate(rInt.character.Reesources)))
+            if (rInt.interactable == null || (rInt.action.FinishCondition != null && rInt.action.FinishCondition.Evaluate(rInt.character.Resources)))
                 GoToIdle(rInt.character);
         }
     }

@@ -876,7 +876,7 @@ MonoBehaviour:
   mover: {fileID: 2856654054599076592}
   interacter: {fileID: 2856654054599076594}
   animator: {fileID: 3127106090180550197}
-  Reesources: {fileID: 3423824798375492421}
+  Resources: {fileID: 3423824798375492421}
   OnSelect:
     m_PersistentCalls:
       m_Calls:

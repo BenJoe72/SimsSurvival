@@ -40,7 +40,7 @@ public class Resource_Data : MonoBehaviour
 
     public virtual void DropOffResource(Interaction interaction)
     {
-        Resource_Data cdata = interaction.character.Reesources.data.FirstOrDefault(x => x.definition.Name == definition.Name);
+        Resource_Data cdata = interaction.character.Resources.data.FirstOrDefault(x => x.definition.Name == definition.Name);
 
         if (cdata != null)
             Add(cdata.currentValue);

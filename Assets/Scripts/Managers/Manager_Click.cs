@@ -1,42 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
+using System.Linq;
 
 [RequireComponent(typeof(CurrentCharacter_Data))]
 public class Manager_Click : MonoBehaviour
 {
-    public Camera _MainCamera;
-    public LayerMask _ClickLayer;
-    public LayerMask _GroundLayer;
-    public LayerMask _CharacterLayer;
+    [Header("Old stuff")]
+    public Camera MainCamera;
 
     [Header("Events")]
-    public Vector2Event _ClickScreenPositionEvent;
-    public Vector3Event _HoverPositionEvent;
-    public InteractionEvent _ClickInteractionEvent;
-    public InteractableEvent _ClickInteractableEvent;
-    public CharacterEvent _ClickCharacterEvent;
-    public CharacterEvent _RightClickCharacterEvent;
-
-
-    public Vector3Event _House_ClickDownEvent;
-    public Vector3Event _House_ClickHoldEvent;
-    public Vector3Event _House_ClickUpEvent;
+    public ClickConfiguration[] ClickConfigurations;
 
     private CurrentCharacter_Data _currentCharacter;
+    private ClickConfiguration _currentConfiguration;
 
-    // TODO: do something with this later to not be hard-coded 2 states
-    private bool _isEditing;
-    public void EnableEdit()
-    {
-        _isEditing = true;
-    }
-    public void DisableEdit()
-    {
-        _isEditing = false;
-    }
-
-
+#region UI click setup
     private int fingerID = -1;
     private void Awake()
     {
@@ -44,6 +24,7 @@ public class Manager_Click : MonoBehaviour
         fingerID = 0; 
 #endif
     }
+#endregion UI click setup
 
     private void Start()
     {
@@ -57,138 +38,152 @@ public class Manager_Click : MonoBehaviour
         _hoverRequested = true;
     }
 
+    public void SetState(GameState newState)
+    {
+        ClickConfiguration newConfig = ClickConfigurations.FirstOrDefault(x => x.State == newState);
+        if (newConfig != null)
+            _currentConfiguration = newConfig;
+    }
+
     public void Hover(Vector2 screenPos)
     {
         if (!_hoverRequested)
             return;
 
-        Ray ray = _MainCamera.ScreenPointToRay(screenPos);
-        RaycastHit hit;
-
-        if (!EventSystem.current.IsPointerOverGameObject(fingerID) && Physics.Raycast(ray, out hit, float.MaxValue, _isEditing ? _GroundLayer : _ClickLayer))
+        if (ValidWorldClick())
         {
-            _HoverPositionEvent?.Invoke(hit.point);
+            _currentConfiguration.HandleHover(GetRay(screenPos));
             _hoverRequested = false;
         }
     }
 
-    public void RightClicked(Vector2 screenPos)
+    public void HandleMouseClick(MouseClickData data)
     {
-        Ray ray = _MainCamera.ScreenPointToRay(screenPos);
-        RaycastHit hit;
+        if (ValidWorldClick())
+            _currentConfiguration.HandleClick(GetRay(data.ScreenPosition), _currentCharacter.character, data);
+    }
 
-        if (!EventSystem.current.IsPointerOverGameObject(fingerID))
+    private Ray GetRay(Vector2 screenPos)
+    {
+        return MainCamera.ScreenPointToRay(screenPos);
+    }
+
+    private bool ValidWorldClick()
+    {
+        return _currentConfiguration != null && !EventSystem.current.IsPointerOverGameObject(fingerID);
+    }
+
+    [System.Serializable]
+    public class ClickConfiguration
+    {
+        public string Name;
+        public GameState State;
+
+        [Header("Events")]
+        public Vector3Event HoverEvent;
+
+        public ClickSet<Vector2> ScreenPositionClick;
+        public ClickSet<Vector3> PositionClick;
+        public ClickSet<Interaction> InteractionClick;
+        public ClickSet<Interactable> InteractableClick;
+        public ClickSet<CharacterScript> CharacterClick;
+
+        public void HandleHover(Ray ray)
         {
-            if (Physics.Raycast(ray, out hit, float.MaxValue, _CharacterLayer))
-            {
-                CharacterScript character = hit.transform.GetComponent<CharacterScript>();
+            // Hover
+            RaycastHit position;
+            if (PositionClick.RayCast(ray, out position))
+                HoverEvent?.Invoke(position.point);
+        }
 
+        public void HandleClick(Ray ray, CharacterScript currentCharacter, MouseClickData data)
+        {
+            // Screen position
+            ScreenPositionClick.HandleClicks(data.ScreenPosition, data);
+
+            // Position
+            RaycastHit position;
+            if (PositionClick.RayCast(ray, out position))
+                PositionClick.HandleClicks(position.point, data);
+
+            // Character
+            RaycastHit characterHit;
+            if (CharacterClick.RayCast(ray, out characterHit))
+            {
+                CharacterScript character = characterHit.collider.GetComponent<CharacterScript>();
                 if (character != null)
+                    CharacterClick.HandleClicks(character, data);
+            }
+            else
+            {
+                // Interactable
+                RaycastHit interactableHit;
+                if (InteractableClick.RayCast(ray, out interactableHit))
                 {
-                    _RightClickCharacterEvent?.Invoke(character);
-                    return;
+                    Interactable interactable = interactableHit.collider.GetComponent<Interactable>();
+                    if (interactable != null)
+                        InteractableClick.HandleClicks(interactable, data);
+                }
+
+                // Interaction
+                RaycastHit interactionHit;
+                if (InteractionClick.RayCast(ray, out interactionHit))
+                {
+                    Interactable interactable = interactionHit.collider.GetComponent<Interactable>();
+                    if (interactable != null)
+                        InteractionClick.HandleClicks(new Interaction(currentCharacter, interactable, interactionHit.point, currentCharacter.Resources), data);
                 }
             }
         }
-    }
 
-    public void Clicked(Vector2 screenPos)
-    {
-        Ray ray = _MainCamera.ScreenPointToRay(screenPos);
-        RaycastHit hit;
-
-        if (!EventSystem.current.IsPointerOverGameObject(fingerID))
+        [System.Serializable]
+        public class ClickSet<T>
         {
-            if (Physics.Raycast(ray, out hit, float.MaxValue, _CharacterLayer))
-            {
-                CharacterScript character = hit.transform.GetComponent<CharacterScript>();
+            public LayerMask ClickLayer;
+            public ClickEvents LeftClick;
+            public ClickEvents RightClick;
 
-                if (character != null)
+            public void HandleClicks(T target, MouseClickData data)
+            {
+                switch (data.Button)
                 {
-                    _ClickCharacterEvent?.Invoke(character);
-                    return;
+                    default:
+                    case MouseButton.LEFT:
+                        LeftClick.HandleClicks(target, data.EventType);
+                        break;
+                    case MouseButton.RIGHT:
+                        RightClick.HandleClicks(target, data.EventType);
+                        break;
                 }
             }
 
-            if (Physics.Raycast(ray, out hit, float.MaxValue, _ClickLayer + _GroundLayer))
+            public bool RayCast(Ray ray, out RaycastHit hit)
             {
-                Interactable interactable = hit.transform.GetComponent<Interactable>();
+                return Physics.Raycast(ray, out hit, float.MaxValue, ClickLayer);
+            }
 
-                if (interactable != null)
+            [System.Serializable]
+            public class ClickEvents
+            {
+                public TypedScriptableEvent<T> ClickDownEvent;
+                public TypedScriptableEvent<T> ClickHoldEvent;
+                public TypedScriptableEvent<T> ClickUpEvent;
+
+                public void HandleClicks(T target, MouseEventType type)
                 {
-                    _ClickScreenPositionEvent?.Invoke(screenPos);
-
-                    Vector3 position = hit.point;
-                    if (interactable.InteractionPoint != null)
-                        position = interactable.InteractionPoint.position;
-
-                    if (!_isEditing)
+                    switch (type)
                     {
-                        _ClickInteractionEvent?.Invoke(new Interaction(_currentCharacter.character, interactable, position, _currentCharacter.character.Reesources));
+                        default:
+                        case MouseEventType.DOWN:
+                            ClickDownEvent?.Invoke(target);
+                            break;
+                        case MouseEventType.UP:
+                            ClickUpEvent?.Invoke(target);
+                            break;
+                        case MouseEventType.HOLD:
+                            ClickHoldEvent?.Invoke(target);
+                            break;
                     }
-                    else
-                    {
-                        _ClickInteractableEvent?.Invoke(interactable);
-                    }
-                }
-            }
-        }
-    }
-
-    // TODO: refactor, very much, please, for the love of ...
-
-    public void ButtonDown(Vector2 screenPos)
-    {
-        Ray ray = _MainCamera.ScreenPointToRay(screenPos);
-        RaycastHit hit;
-
-        if (!EventSystem.current.IsPointerOverGameObject(fingerID))
-        {
-            if (Physics.Raycast(ray, out hit, float.MaxValue, _GroundLayer))
-            {
-                Interactable interactable = hit.transform.GetComponent<Interactable>();
-
-                if (interactable != null)
-                {
-                    _House_ClickDownEvent?.Invoke(hit.point);
-                }
-            }
-        }
-    }
-
-    public void ButtonUp(Vector2 screenPos)
-    {
-        Ray ray = _MainCamera.ScreenPointToRay(screenPos);
-        RaycastHit hit;
-
-        if (!EventSystem.current.IsPointerOverGameObject(fingerID))
-        {
-            if (Physics.Raycast(ray, out hit, float.MaxValue, _GroundLayer))
-            {
-                Interactable interactable = hit.transform.GetComponent<Interactable>();
-
-                if (interactable != null)
-                {
-                    _House_ClickUpEvent?.Invoke(hit.point);
-                }
-            }
-        }
-    }
-
-    public void ButtonHold(Vector2 screenPos)
-    {
-        Ray ray = _MainCamera.ScreenPointToRay(screenPos);
-        RaycastHit hit;
-
-        if (!EventSystem.current.IsPointerOverGameObject(fingerID))
-        {
-            if (Physics.Raycast(ray, out hit, float.MaxValue, _GroundLayer))
-            {
-                Interactable interactable = hit.transform.GetComponent<Interactable>();
-
-                if (interactable != null)
-                {
-                    _House_ClickHoldEvent?.Invoke(hit.point);
                 }
             }
         }

@@ -12,6 +12,7 @@ public abstract class TypedScriptableEvent<T> : ScriptableObject
     private void Awake()
     {
         _listeneres = new List<TypedScriptableEventListener<T>>();
+        _orderedListeners = new List<TypedScriptableEventListener<T>>();
     }
 
     public virtual void Register(TypedScriptableEventListener<T> listener)

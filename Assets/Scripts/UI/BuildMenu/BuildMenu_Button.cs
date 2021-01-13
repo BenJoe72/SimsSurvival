@@ -19,9 +19,9 @@ public class BuildMenu_Button : MonoBehaviour
 
         Element = element;
         _button.interactable = element.CanBuild;
-        if (element._Icon != null) IconImage.sprite = element._Icon;
+        if (element.Icon != null) IconImage.sprite = element.Icon;
 
-        Hint.SetPrice(element._BuildPrice);
+        Hint.SetPrice(element.BuildPrice);
         Hint.HideHint();
     }
 

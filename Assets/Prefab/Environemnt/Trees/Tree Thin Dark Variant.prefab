@@ -89,6 +89,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 239070913323768269, guid: 61762020193be2b438cdbe8a2ef9c5f4, type: 3}
+      propertyPath: m_Height
+      value: 4.9335427
+      objectReference: {fileID: 0}
+    - target: {fileID: 239070913323768269, guid: 61762020193be2b438cdbe8a2ef9c5f4, type: 3}
+      propertyPath: m_Center.y
+      value: 1.9667714
+      objectReference: {fileID: 0}
     - target: {fileID: 2393690490986110312, guid: 61762020193be2b438cdbe8a2ef9c5f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.74
@@ -135,7 +143,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6788351722897989310, guid: 61762020193be2b438cdbe8a2ef9c5f4, type: 3}
       propertyPath: m_Name
-      value: Tree Thin Dark
+      value: Tree Thin Dark Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61762020193be2b438cdbe8a2ef9c5f4, type: 3}

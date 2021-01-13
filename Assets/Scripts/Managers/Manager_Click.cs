@@ -18,6 +18,11 @@ public class Manager_Click : MonoBehaviour
     public CharacterEvent _ClickCharacterEvent;
     public CharacterEvent _RightClickCharacterEvent;
 
+
+    public Vector3Event _House_ClickDownEvent;
+    public Vector3Event _House_ClickHoldEvent;
+    public Vector3Event _House_ClickUpEvent;
+
     private CurrentCharacter_Data _currentCharacter;
 
     // TODO: do something with this later to not be hard-coded 2 states
@@ -105,7 +110,7 @@ public class Manager_Click : MonoBehaviour
                 }
             }
 
-            if (Physics.Raycast(ray, out hit, float.MaxValue, _ClickLayer))
+            if (Physics.Raycast(ray, out hit, float.MaxValue, _ClickLayer + _GroundLayer))
             {
                 Interactable interactable = hit.transform.GetComponent<Interactable>();
 
@@ -114,8 +119,8 @@ public class Manager_Click : MonoBehaviour
                     _ClickScreenPositionEvent?.Invoke(screenPos);
 
                     Vector3 position = hit.point;
-                    if (interactable._InteractionPoint != null)
-                        position = interactable._InteractionPoint.position;
+                    if (interactable.InteractionPoint != null)
+                        position = interactable.InteractionPoint.position;
 
                     if (!_isEditing)
                     {
@@ -125,6 +130,65 @@ public class Manager_Click : MonoBehaviour
                     {
                         _ClickInteractableEvent?.Invoke(interactable);
                     }
+                }
+            }
+        }
+    }
+
+    // TODO: refactor, very much, please, for the love of ...
+
+    public void ButtonDown(Vector2 screenPos)
+    {
+        Ray ray = _MainCamera.ScreenPointToRay(screenPos);
+        RaycastHit hit;
+
+        if (!EventSystem.current.IsPointerOverGameObject(fingerID))
+        {
+            if (Physics.Raycast(ray, out hit, float.MaxValue, _GroundLayer))
+            {
+                Interactable interactable = hit.transform.GetComponent<Interactable>();
+
+                if (interactable != null)
+                {
+                    _House_ClickDownEvent?.Invoke(hit.point);
+                }
+            }
+        }
+    }
+
+    public void ButtonUp(Vector2 screenPos)
+    {
+        Ray ray = _MainCamera.ScreenPointToRay(screenPos);
+        RaycastHit hit;
+
+        if (!EventSystem.current.IsPointerOverGameObject(fingerID))
+        {
+            if (Physics.Raycast(ray, out hit, float.MaxValue, _GroundLayer))
+            {
+                Interactable interactable = hit.transform.GetComponent<Interactable>();
+
+                if (interactable != null)
+                {
+                    _House_ClickUpEvent?.Invoke(hit.point);
+                }
+            }
+        }
+    }
+
+    public void ButtonHold(Vector2 screenPos)
+    {
+        Ray ray = _MainCamera.ScreenPointToRay(screenPos);
+        RaycastHit hit;
+
+        if (!EventSystem.current.IsPointerOverGameObject(fingerID))
+        {
+            if (Physics.Raycast(ray, out hit, float.MaxValue, _GroundLayer))
+            {
+                Interactable interactable = hit.transform.GetComponent<Interactable>();
+
+                if (interactable != null)
+                {
+                    _House_ClickHoldEvent?.Invoke(hit.point);
                 }
             }
         }

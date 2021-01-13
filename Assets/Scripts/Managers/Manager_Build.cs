@@ -6,6 +6,7 @@ public class Manager_Build : MonoBehaviour
 {
     public List<Interactable> Buildables;
     public Manager_Resource ResourceManager;
+    public Material BuildMaterial;
 
     [Header("Events")]
     public InteractableListEvent OnShowBuildables;
@@ -41,7 +42,7 @@ public class Manager_Build : MonoBehaviour
 
     public void SelectBuildable(Interactable buildable)
     {
-        if (_isBuildling || _placedBuilding)
+        if (_isBuildling || _placedBuilding || buildable.Generated)
             return;
 
         _isCreating = buildable.gameObject.GetIsPrefab();
@@ -55,6 +56,7 @@ public class Manager_Build : MonoBehaviour
             _ignoreSetRotation = true;
         }
 
+        _selectedBuildable.SetMaterial(BuildMaterial);
         _selectedBuildable.DisableInteraction();
         _isBuildling = true;
     }
@@ -65,17 +67,20 @@ public class Manager_Build : MonoBehaviour
             return;
 
         if (!_isRotating)
+        {
             _selectedBuildable.transform.position = position;
+            _selectedBuildable.CheckOverLaps();
+        }
         else
             _selectedBuildable.transform.LookAt(position);
     }
 
     public void PlaceBuildable()
     {
-        if (!_isBuildling)
+        if (!_isBuildling || _selectedBuildable.CheckOverLaps())
             return;
 
-        ResourceManager.PayPrice(_selectedBuildable._BuildPrice);
+        ResourceManager.PayPrice(_selectedBuildable.BuildPrice);
         _isRotating = true;
     }
 
@@ -88,6 +93,8 @@ public class Manager_Build : MonoBehaviour
         }
 
         OnPlaceBuildable?.Invoke();
+
+        _selectedBuildable.ResetMaterial();
         _selectedBuildable.EnableInteraction();
         _selectedBuildable = null;
         _isBuildling = false;
@@ -112,7 +119,8 @@ public class Manager_Build : MonoBehaviour
             _selectedBuildable.transform.rotation = _previousRotation;
             _selectedBuildable.EnableInteraction();
         }
-        
+
+        _selectedBuildable.ResetMaterial();
         _selectedBuildable = null;
         _isBuildling = false;
         _isRotating = false;

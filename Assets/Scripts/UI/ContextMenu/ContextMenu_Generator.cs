@@ -30,7 +30,7 @@ public class ContextMenu_Generator : MonoBehaviour
         Clear();
 
         // Select only the interactions that can actually be performed
-        var performableInteracitons = interaction.interactable._Intearctions.Where(x => x.CanPerform(interaction)).ToList();
+        var performableInteracitons = interaction.interactable.Intearctions.Where(x => x.CanPerform(interaction)).ToList();
 
         if (performableInteracitons.Count > 0)
         {

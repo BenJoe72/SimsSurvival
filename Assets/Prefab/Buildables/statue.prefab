@@ -142,15 +142,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c1e0832b728f9f448ce54960ecc066d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Intearctions:
+  Intearctions:
   - {fileID: 11400000, guid: 0119ffcc56cfb204ba7ee6ef73d00c44, type: 2}
-  _InteractionPoint: {fileID: 6738848343248402093}
-  _Icon: {fileID: 21300000, guid: 108f7d243472c9648863f16c358a3e40, type: 3}
-  _BuildPrice:
+  InteractionPoint: {fileID: 6738848343248402093}
+  Icon: {fileID: 21300000, guid: 108f7d243472c9648863f16c358a3e40, type: 3}
+  BuildPrice:
   - Type: {fileID: 11400000, guid: 76a6406f1fce07e4790fc224805c5671, type: 2}
     Value: 5
-  - Type: {fileID: 11400000, guid: 687151b3b88dd0c49aed47933fec3055, type: 2}
-    Value: 5
+  OccupyArea: 0.7
+  Generated: 0
   InteractedResponse:
     m_PersistentCalls:
       m_Calls: []

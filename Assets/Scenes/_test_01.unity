@@ -152,6 +152,7 @@ Transform:
   m_Children:
   - {fileID: 1591842065}
   - {fileID: 964708309}
+  - {fileID: 1572892655}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1158,7 +1159,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &497077335
 Transform:
   m_ObjectHideFlags: 0
@@ -1192,6 +1193,7 @@ MonoBehaviour:
   - {fileID: 6738848342591136867, guid: e2f939ee9a55f1242bc2e370aae325df, type: 3}
   - {fileID: 2393856385357444927, guid: e630d6e42e35d11479508094a489f400, type: 3}
   ResourceManager: {fileID: 895670466}
+  BuildMaterial: {fileID: 2100000, guid: e1fcd64d6d140684482e0d73092ec10e, type: 2}
   OnShowBuildables: {fileID: 11400000, guid: 0302fc85f5d6a6145b1c975dbfa90cd8, type: 2}
   OnRequestHover: {fileID: 11400000, guid: 080484ec32edffc4fb6cd254788659e4, type: 2}
   OnPlaceBuildable: {fileID: 11400000, guid: e70df0a95f372364bb549c15a4b224b1, type: 2}
@@ -1657,6 +1659,9 @@ GameObject:
   - component: {fileID: 716329708}
   - component: {fileID: 716329711}
   - component: {fileID: 716329710}
+  - component: {fileID: 716329714}
+  - component: {fileID: 716329713}
+  - component: {fileID: 716329712}
   m_Layer: 0
   m_Name: ClickManager
   m_TagString: Untagged
@@ -1722,7 +1727,7 @@ MonoBehaviour:
   _MainCamera: {fileID: 373988397}
   _ClickLayer:
     serializedVersion: 2
-    m_Bits: 1280
+    m_Bits: 256
   _GroundLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -1735,6 +1740,9 @@ MonoBehaviour:
   _ClickInteractableEvent: {fileID: 11400000, guid: 3bc5b24a7afbb8f42bb6dac7b625a902, type: 2}
   _ClickCharacterEvent: {fileID: 11400000, guid: 17dabb824c038e94a9001819f24c0fb9, type: 2}
   _RightClickCharacterEvent: {fileID: 11400000, guid: 0a5186695b1c7ec49a5f421b41949318, type: 2}
+  _House_ClickDownEvent: {fileID: 11400000, guid: e41bd84d9666f9b42b58b5158c7220ad, type: 2}
+  _House_ClickHoldEvent: {fileID: 11400000, guid: c6e1ea2d37948c34399780133363e990, type: 2}
+  _House_ClickUpEvent: {fileID: 11400000, guid: d66843e9d4da307438be44fb2efd081a, type: 2}
 --- !u!114 &716329706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1898,6 +1906,93 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &716329712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716329702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47706ce1c3be3524cb92dbee5085e423, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Event: {fileID: 11400000, guid: 6eb2cfa9b8afaea47a7b0569fe761a68, type: 2}
+  Priority: 0
+  _Activate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 716329705}
+        m_TargetAssemblyTypeName: Manager_Click, Assembly-CSharp
+        m_MethodName: ButtonUp
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &716329713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716329702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47706ce1c3be3524cb92dbee5085e423, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Event: {fileID: 11400000, guid: efde6d769fcfc2645aec8e729768a51e, type: 2}
+  Priority: 0
+  _Activate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 716329705}
+        m_TargetAssemblyTypeName: Manager_Click, Assembly-CSharp
+        m_MethodName: ButtonDown
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &716329714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716329702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47706ce1c3be3524cb92dbee5085e423, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Event: {fileID: 11400000, guid: 9928ffbfb66d34b489f1e1dc958b3abd, type: 2}
+  Priority: 0
+  _Activate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 716329705}
+        m_TargetAssemblyTypeName: Manager_Click, Assembly-CSharp
+        m_MethodName: ButtonHold
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &765430000
 GameObject:
   m_ObjectHideFlags: 0
@@ -2040,7 +2135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &863118628
 Transform:
   m_ObjectHideFlags: 0
@@ -2358,6 +2453,7 @@ Transform:
   - {fileID: 1473937129}
   - {fileID: 1272173090}
   - {fileID: 895670465}
+  - {fileID: 1058512509}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2391,6 +2487,203 @@ Transform:
   m_Father: {fileID: 25054414}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1058512508
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1058512509}
+  - component: {fileID: 1058512510}
+  - component: {fileID: 1058512513}
+  - component: {fileID: 1058512512}
+  - component: {fileID: 1058512511}
+  - component: {fileID: 1058512515}
+  - component: {fileID: 1058512514}
+  m_Layer: 0
+  m_Name: HouseManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1058512509
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058512508}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 961777713}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1058512510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058512508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f944a9801030748b4ea66d353f9561, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FoundationPrefab: {fileID: 8105987122951307981, guid: 9494a0b0ac253f845af2c4a9c697c1f2, type: 3}
+  HouseContainer: {fileID: 1572892655}
+  MinFoundationHeight: 0
+  MaxFoundationHeight: 3
+--- !u!114 &1058512511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058512508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f234a1fb6bcd644a2099af9ce03624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Event: {fileID: 11400000, guid: e41bd84d9666f9b42b58b5158c7220ad, type: 2}
+  Priority: 0
+  _Activate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1058512510}
+        m_TargetAssemblyTypeName: HouseManager, Assembly-CSharp
+        m_MethodName: StartFoundation
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1058512512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058512508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f234a1fb6bcd644a2099af9ce03624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Event: {fileID: 11400000, guid: c6e1ea2d37948c34399780133363e990, type: 2}
+  Priority: 0
+  _Activate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1058512510}
+        m_TargetAssemblyTypeName: HouseManager, Assembly-CSharp
+        m_MethodName: DragFoundation
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1058512513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058512508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f234a1fb6bcd644a2099af9ce03624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Event: {fileID: 11400000, guid: d66843e9d4da307438be44fb2efd081a, type: 2}
+  Priority: 0
+  _Activate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1058512510}
+        m_TargetAssemblyTypeName: HouseManager, Assembly-CSharp
+        m_MethodName: PlaceFoundation
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1058512514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058512508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be25d8f403c8b7a4884a49c75c57749f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Event: {fileID: 11400000, guid: a50dbed7ec5dbdf458b84c7047ce7ab9, type: 2}
+  Priority: 0
+  _Activate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1058512510}
+        m_TargetAssemblyTypeName: HouseManager, Assembly-CSharp
+        m_MethodName: LowerFoundation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1058512515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058512508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be25d8f403c8b7a4884a49c75c57749f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Event: {fileID: 11400000, guid: a8e97480bdff46741945a880d4ae4d13, type: 2}
+  Priority: 0
+  _Activate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1058512510}
+        m_TargetAssemblyTypeName: HouseManager, Assembly-CSharp
+        m_MethodName: RaiseFoundation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1118705568
 GameObject:
   m_ObjectHideFlags: 0
@@ -2630,6 +2923,62 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 8f1cc3ef-04ca-42b1-9521-5b2ae8cdcac9
     m_ActionName: KeyboardMouse/Spacebar[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1118705571}
+        m_TargetAssemblyTypeName: Manager_Input, Assembly-CSharp
+        m_MethodName: SetContext
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1118705571}
+        m_TargetAssemblyTypeName: Manager_Input, Assembly-CSharp
+        m_MethodName: HandleInput
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 29365a1ec1b7e2541a51c04593847a2f, type: 2}
+          m_ObjectArgumentAssemblyTypeName: InputHandler_Scriptable, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 96c850bb-cfe0-45c3-80a1-5a38229c57a3
+    m_ActionName: KeyboardMouse/New action
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1118705571}
+        m_TargetAssemblyTypeName: Manager_Input, Assembly-CSharp
+        m_MethodName: SetContext
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1118705571}
+        m_TargetAssemblyTypeName: Manager_Input, Assembly-CSharp
+        m_MethodName: HandleInput
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: d21a3a5c30555f641bc0ac8f88a2f29a, type: 2}
+          m_ObjectArgumentAssemblyTypeName: InputHandler_Scriptable, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7f19b784-4e03-4a53-9845-c8894f4f22a3
+    m_ActionName: KeyboardMouse/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: KeyboardMouse
@@ -3829,6 +4178,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &1572892654
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1572892655}
+  m_Layer: 0
+  m_Name: House
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1572892655
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572892654}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 25054414}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1591842061
 GameObject:
   m_ObjectHideFlags: 0
@@ -3941,11 +4320,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c1e0832b728f9f448ce54960ecc066d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Intearctions:
+  Intearctions:
   - {fileID: 11400000, guid: 7fdafe8531e229f4fb60b52fdd4cd889, type: 2}
-  _InteractionPoint: {fileID: 0}
-  _Icon: {fileID: 0}
-  _BuildPrice: []
+  InteractionPoint: {fileID: 0}
+  Icon: {fileID: 0}
+  BuildPrice: []
+  OccupyArea: 1
+  Generated: 1
   InteractedResponse:
     m_PersistentCalls:
       m_Calls: []
@@ -4714,7 +5095,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1857280546
 RectTransform:
   m_ObjectHideFlags: 0

@@ -60,12 +60,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c1e0832b728f9f448ce54960ecc066d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Intearctions:
+  Intearctions:
   - {fileID: 11400000, guid: 7f2cda72a327d964ea3c64b4ecf0ba85, type: 2}
   - {fileID: 11400000, guid: ad5aa7d00e8278c4695e8b13b765c773, type: 2}
-  _InteractionPoint: {fileID: 2393856385995394467}
-  _Icon: {fileID: 21300000, guid: 42d5e8adb49dbf647aff762fe22184d8, type: 3}
-  _BuildPrice: []
+  InteractionPoint: {fileID: 2393856385995394467}
+  Icon: {fileID: 21300000, guid: 42d5e8adb49dbf647aff762fe22184d8, type: 3}
+  BuildPrice: []
+  OccupyArea: 0.55
+  Generated: 0
   InteractedResponse:
     m_PersistentCalls:
       m_Calls: []

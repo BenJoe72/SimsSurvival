@@ -17,10 +17,10 @@ public class SitDownAction : BaseAction
 
     private void MessWithAnimation(CharacterScript character, Interactable interactable)
     {
-        if (interactable._InteractionPoint != null)
+        if (interactable.InteractionPoint != null)
         {
-            character.transform.DOMove(interactable._InteractionPoint.position, .25f);
-            character.transform.DORotateQuaternion(interactable._InteractionPoint.rotation, SitDownSpeed);
+            character.transform.DOMove(interactable.InteractionPoint.position, .25f);
+            character.transform.DORotateQuaternion(interactable.InteractionPoint.rotation, SitDownSpeed);
         }
 
         character.mover.DisableNavmesh();

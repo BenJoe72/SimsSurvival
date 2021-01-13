@@ -9,7 +9,7 @@ public class ActionCondition : ScriptableObject
 
     public bool Evaluate(Manager_Resource resource)
     {
-        var result = conditionElements[0].conneciton == ConditionConnection.And;
+        bool result = conditionElements[0].conneciton == ConditionConnection.And;
 
         foreach (var element in conditionElements)
         {

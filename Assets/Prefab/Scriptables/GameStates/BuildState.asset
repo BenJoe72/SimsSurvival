@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: BuildState
   m_EditorClassIdentifier: 
   Name: Build
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 1c12112f49cf81b45a4f79ddd2ede630, type: 3}

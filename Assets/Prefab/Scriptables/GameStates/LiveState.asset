@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: LiveState
   m_EditorClassIdentifier: 
   Name: Live
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 3a82bc0468130284dbf6730f9d668020, type: 3}

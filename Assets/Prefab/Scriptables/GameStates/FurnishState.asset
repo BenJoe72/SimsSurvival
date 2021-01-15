@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: FurnishState
   m_EditorClassIdentifier: 
   Name: Furnish
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: c5e47b652f58c84478119b04ec953062, type: 3}

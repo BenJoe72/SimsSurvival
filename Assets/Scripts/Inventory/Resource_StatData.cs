@@ -23,15 +23,4 @@ public class Resource_StatData : Resource_Data
     {
         _selected = false;
     }
-
-    //// For testing purposes
-    //float nextadd;
-    //private void Update()
-    //{
-    //    if (nextadd < Time.time)
-    //    {
-    //        Add(Random.Range(-10, 10));
-    //        nextadd = Time.time + Random.Range(1, 3);
-    //    }        
-    //}
 }

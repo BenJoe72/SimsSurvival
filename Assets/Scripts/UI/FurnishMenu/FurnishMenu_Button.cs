@@ -3,12 +3,12 @@ using System.Collections;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
-public class BuildMenu_Button : MonoBehaviour
+public class FurnishMenu_Button : MonoBehaviour
 {
     public Interactable Element;
     public Image IconImage;
     private Button _button;
-    public BuildMenu_ButtonHint Hint;
+    public FurnishMenu_ButtonHint Hint;
 
     [Header("Events")]
     public InteractableEvent OnSelectElement;

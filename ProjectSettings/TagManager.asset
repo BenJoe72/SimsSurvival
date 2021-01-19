@@ -17,6 +17,8 @@ TagManager:
   - Navmesh
   - Ground
   - Character
+  - Foundation
+  - Wall
   - 
   - 
   - 
@@ -33,9 +35,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - PlacementValidator
   - CharacterCamera
   m_SortingLayers:
   - name: Default

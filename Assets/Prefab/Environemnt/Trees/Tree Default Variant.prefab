@@ -133,9 +133,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4118560140438571778, guid: 61762020193be2b438cdbe8a2ef9c5f4, type: 3}
+      propertyPath: m_Radius
+      value: 1.1371768
+      objectReference: {fileID: 0}
+    - target: {fileID: 4118560140438571778, guid: 61762020193be2b438cdbe8a2ef9c5f4, type: 3}
+      propertyPath: m_Height
+      value: 6.1102533
+      objectReference: {fileID: 0}
+    - target: {fileID: 4118560140438571778, guid: 61762020193be2b438cdbe8a2ef9c5f4, type: 3}
+      propertyPath: m_Center.y
+      value: 2.0551267
+      objectReference: {fileID: 0}
+    - target: {fileID: 5787062079880326640, guid: 61762020193be2b438cdbe8a2ef9c5f4, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6788351722897989310, guid: 61762020193be2b438cdbe8a2ef9c5f4, type: 3}
       propertyPath: m_Name
-      value: Tree Default
+      value: Tree Default Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61762020193be2b438cdbe8a2ef9c5f4, type: 3}

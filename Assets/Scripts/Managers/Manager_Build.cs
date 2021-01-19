@@ -3,46 +3,102 @@ using System.Collections;
 
 public class Manager_Build : MonoBehaviour
 {
-    public FoundationBuildScript FoundationPrefab;
     public Transform HouseContainer;
-    public int MinFoundationHeight;
-    public int MaxFoundationHeight;
+    public int MinBuildingBlockHeight;
+    public int MaxBuildingBlockHeight;
 
-    private FoundationBuildScript _createdFoundation;
-    private float _currentFoundationHeight;
+    [Header("Events")]
+    public ScriptableEvent RebuildNavmeshEvent;
 
-    public void StartFoundation(Vector3 position)
+    private BuildingBlock _createdBuildingBlock;
+    private BuildingBlock _selectedBuildingBlock;
+    private float _currentBlockHeight;
+
+    public void RotateBuildingClockwise()
     {
-        _createdFoundation = Instantiate(FoundationPrefab, HouseContainer);
-        _createdFoundation.RecalculatePosition(position);
-        _currentFoundationHeight = _createdFoundation.transform.position.y;
+        if (_createdBuildingBlock != null)
+            _createdBuildingBlock.RotateClockwise();
     }
 
-    public void DragFoundation(Vector3 position)
+    public void RotateBuildingCounterClockwise()
     {
-        _createdFoundation.RecalculateSize(position);
+        if (_createdBuildingBlock != null)
+            _createdBuildingBlock.RotateCounterClockwise();
     }
 
-    public void PlaceFoundation(Vector3 position)
+    public void SelectBuildingBlockType(BuildingBlock selectedBlock)
     {
-        _createdFoundation = null;
+        CancelBuildingBlock();
+        _selectedBuildingBlock = selectedBlock;
     }
 
-    public void RaiseFoundation()
+    public void StartBuildingBlock(Vector3 position)
     {
-        if (_currentFoundationHeight < MaxFoundationHeight)
+        if (_selectedBuildingBlock == null)
+            return;
+
+        _createdBuildingBlock = Instantiate(_selectedBuildingBlock, HouseContainer);
+        _createdBuildingBlock.RecalculatePosition(position);
+        _createdBuildingBlock.RecalculateSize(position);
+        _currentBlockHeight = _createdBuildingBlock.transform.position.y;
+    }
+
+    public void DragBuildingBlock(Vector3 position)
+    {
+        if (_createdBuildingBlock != null)
         {
-            _currentFoundationHeight++;
-            _createdFoundation.RecalculateHeight(_currentFoundationHeight);
+            _createdBuildingBlock.RecalculateSize(position);
         }
     }
 
-    public void LowerFoundation()
+    public void PlaceBuildingBlock(Vector3 position)
     {
-        if (_currentFoundationHeight > MinFoundationHeight)
+        if (_createdBuildingBlock != null && !_createdBuildingBlock.IsValidPlacement)
+            CancelBuildingBlock();
+
+        _createdBuildingBlock = null;
+        RebuildNavmeshEvent?.Invoke();
+    }
+
+    public void RaiseBuildingBlock()
+    {
+        if (_createdBuildingBlock != null && _currentBlockHeight < MaxBuildingBlockHeight)
         {
-            _currentFoundationHeight--;
-            _createdFoundation.RecalculateHeight(_currentFoundationHeight);
+            _currentBlockHeight++;
+            _createdBuildingBlock.RecalculateHeight(_currentBlockHeight);
         }
+    }
+
+    public void LowerBuildingBlock()
+    {
+        if (_createdBuildingBlock != null && _currentBlockHeight > MinBuildingBlockHeight)
+        {
+            _currentBlockHeight--;
+            _createdBuildingBlock.RecalculateHeight(_currentBlockHeight);
+        }
+    }
+
+    public void CancelBuildingBlock()
+    {
+        if (_createdBuildingBlock != null)
+            RemoveBlock(_createdBuildingBlock);
+    }
+
+    public void RemoveBlock(Interactable interactable)
+    {
+        if (_selectedBuildingBlock != null)
+            return;
+
+        BuildingBlock block = interactable.GetComponent<BuildingBlock>();
+        if (block != null)
+        {
+            RemoveBlock(block);
+        }
+    }
+
+    private void RemoveBlock(BuildingBlock block)
+    {
+        block.Destroy();
+        RebuildNavmeshEvent?.Invoke();
     }
 }

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Eat
   Condition: {fileID: 0}
-  FinishCondition: {fileID: 0}
+  FinishCondition: {fileID: 11400000, guid: 31bffefc0514e5946a3f207eaaea6115, type: 2}
   BeginInteractionEvent: {fileID: 11400000, guid: 38e180f598fa04c41914f693f0f81a22, type: 2}
   InteractionEvent: {fileID: 11400000, guid: bbf3cc241d66bb94bae48f554fd164da, type: 2}
-  IsRepeating: 0
-  RepeatDelay: 1
+  IsRepeating: 1
+  RepeatDelay: 3
   TurnSpeed: 0.3

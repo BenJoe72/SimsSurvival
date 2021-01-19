@@ -37,7 +37,7 @@ public class Manager_Environment : MonoBehaviour
             int generatorSeed = definition.Seed;
 
             if (RandomSeed)
-                generatorSeed = (int)UnityEngine.Random.Range((int)0, (int)10000);
+                generatorSeed = RandomHelper.Range(0, 10000);
 
             UnityEngine.Random.InitState(generatorSeed);
 

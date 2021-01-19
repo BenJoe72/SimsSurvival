@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BuildMenu_ButtonHintEntry : MonoBehaviour
+public class FurnishMenu_ButtonHintEntry : MonoBehaviour
 {
     public Image Icon;
     public TextMeshProUGUI Text;

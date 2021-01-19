@@ -11,9 +11,8 @@ public class Interactable : MonoBehaviour
     public Transform InteractionPoint;
     public Sprite Icon;
     public BuildPrice[] BuildPrice;
-    public float OccupyArea = 1f;
     public bool Generated = false;
-    
+
     public bool CanBuild { get; private set; }
 
     public UnityEvent InteractedResponse;
@@ -21,6 +20,7 @@ public class Interactable : MonoBehaviour
     private Collider _collider;
     private Renderer[] _renderers;
     private Material[][] _materials;
+    private Interactable_PlacementValidator _placementValidator;
 
     public void EvaluateBuildable(Manager_Resource resource)
     {
@@ -32,6 +32,7 @@ public class Interactable : MonoBehaviour
         _collider = GetComponent<Collider>();
         _renderers = GetComponentsInChildren<Renderer>(true);
         _materials = new Material[_renderers.Length][];
+        _placementValidator = GetComponentInChildren<Interactable_PlacementValidator>();
     }
 
     public void Interact()
@@ -42,13 +43,17 @@ public class Interactable : MonoBehaviour
     public void EnableInteraction()
     {
         if (_collider != null)
+        {
             _collider.enabled = true;
+        }
     }
 
     public void DisableInteraction()
     {
         if (_collider != null)
+        {
             _collider.enabled = false;
+        }
     }
 
     public void SetMaterial(Material buildMaterial)
@@ -77,8 +82,10 @@ public class Interactable : MonoBehaviour
 
     public bool CheckOverLaps()
     {
-        var overlaps = Physics.SphereCastAll(new Ray(transform.position, Vector3.up), OccupyArea, OccupyArea, (int)Mathf.Pow(2, gameObject.layer));
-        bool result = overlaps.Any(x => x.collider.gameObject != gameObject);
+        bool result = true;
+
+        if (_placementValidator != null)
+            result = !_placementValidator.IsValidPlacement;
 
         foreach (var renderer in _renderers)
         {
@@ -87,16 +94,10 @@ public class Interactable : MonoBehaviour
             foreach (var mat in mats)
             {
                 mat.SetInt("FreeToPlace", result ? 0 : 1);
+                renderer.materials = mats;
             }
-
-            renderer.materials = mats;
         }
 
         return result;
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawWireSphere(transform.position, OccupyArea);
     }
 }

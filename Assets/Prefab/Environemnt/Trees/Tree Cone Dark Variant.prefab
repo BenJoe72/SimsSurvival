@@ -141,6 +141,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4118560140438571778, guid: 61762020193be2b438cdbe8a2ef9c5f4, type: 3}
+      propertyPath: m_Height
+      value: 5.305099
+      objectReference: {fileID: 0}
+    - target: {fileID: 4118560140438571778, guid: 61762020193be2b438cdbe8a2ef9c5f4, type: 3}
+      propertyPath: m_Center.y
+      value: 1.6525495
+      objectReference: {fileID: 0}
+    - target: {fileID: 4118560140438571778, guid: 61762020193be2b438cdbe8a2ef9c5f4, type: 3}
+      propertyPath: m_Radius
+      value: 0.81477904
+      objectReference: {fileID: 0}
+    - target: {fileID: 4118560140438571778, guid: 61762020193be2b438cdbe8a2ef9c5f4, type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5787062079880326640, guid: 61762020193be2b438cdbe8a2ef9c5f4, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6788351722897989310, guid: 61762020193be2b438cdbe8a2ef9c5f4, type: 3}
       propertyPath: m_Name
       value: Tree Cone Dark Variant

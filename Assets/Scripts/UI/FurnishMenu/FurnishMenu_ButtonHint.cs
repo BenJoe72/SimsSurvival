@@ -2,9 +2,9 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class BuildMenu_ButtonHint : MonoBehaviour
+public class FurnishMenu_ButtonHint : MonoBehaviour
 {
-    public BuildMenu_ButtonHintEntry EntryPrefab;
+    public FurnishMenu_ButtonHintEntry EntryPrefab;
 
     private bool hasPrice;
 
@@ -14,7 +14,7 @@ public class BuildMenu_ButtonHint : MonoBehaviour
 
         foreach (var price in prices)
         {
-            BuildMenu_ButtonHintEntry newentry = Instantiate(EntryPrefab, transform);
+            FurnishMenu_ButtonHintEntry newentry = Instantiate(EntryPrefab, transform);
             newentry.SetPrice(price);
         }
     }

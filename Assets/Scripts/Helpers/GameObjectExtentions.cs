@@ -10,6 +10,6 @@ public static class GameObjectExtentions
 
     public static T GetRandom<T>(this T[] array)
     {
-        return array[UnityEngine.Random.Range(0, array.Length)];
+        return array[RandomHelper.Range(0, array.Length)];
     }
 }

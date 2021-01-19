@@ -67,12 +67,14 @@ public class Manager_Furnish : MonoBehaviour
             return;
 
         if (!_isRotating)
-        {
             _selectedBuildable.transform.position = position;
-            _selectedBuildable.CheckOverLaps();
-        }
         else
+        {
+            position.y = _selectedBuildable.transform.position.y;
             _selectedBuildable.transform.LookAt(position);
+        }
+
+        _selectedBuildable.CheckOverLaps();
     }
 
     public void PlaceBuildable()
@@ -86,7 +88,7 @@ public class Manager_Furnish : MonoBehaviour
 
     public void SetRotation()
     {
-        if (_selectedBuildable == null || _ignoreSetRotation || !_isRotating)
+        if (_selectedBuildable == null || _ignoreSetRotation || !_isRotating || _selectedBuildable.CheckOverLaps())
         {
             _ignoreSetRotation = false;
             return;

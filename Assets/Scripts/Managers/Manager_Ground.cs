@@ -33,7 +33,7 @@ public class Manager_Ground : MonoBehaviour
     private void Initialize()
     {
         _Material = _Renderer.material; // NoiseTexture
-        _generationSeed = RandomSeed ? (int)UnityEngine.Random.Range((int)0, (int)10000) : Seed;
+        _generationSeed = RandomSeed ? RandomHelper.Range(0, 10000) : Seed;
     }
 
     private void Generate()

@@ -88,6 +88,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1789190457449853157, guid: e0aff4a98eb06e64d92bcccc3a3069f3, type: 3}
+      propertyPath: m_Height
+      value: 1.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1789190457449853157, guid: e0aff4a98eb06e64d92bcccc3a3069f3, type: 3}
+      propertyPath: m_Radius
+      value: 0.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 1789190457449853157, guid: e0aff4a98eb06e64d92bcccc3a3069f3, type: 3}
+      propertyPath: m_Center.y
+      value: 0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 2706588530212093636, guid: e0aff4a98eb06e64d92bcccc3a3069f3, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3097070317095872273, guid: e0aff4a98eb06e64d92bcccc3a3069f3, type: 3}
       propertyPath: m_Name
       value: Bush Large Variant

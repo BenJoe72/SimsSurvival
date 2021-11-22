@@ -17,6 +17,6 @@ MonoBehaviour:
   Options: 0
   AddedScenes:
   - {fileID: 102900000, guid: 33bf930ab3adaa142af17a8469025433, type: 3}
-  PublishButler: 1
+  PublishButler: 0
   ButlerAccount: benjoe72
   ButlerGame: simssurvival

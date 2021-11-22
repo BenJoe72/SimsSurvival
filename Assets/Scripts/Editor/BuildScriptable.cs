@@ -62,8 +62,8 @@ public class BuildScriptable : ScriptableObject
             Debug.LogError("ERROR while creating zip file.");
 
         // Upload with butler
-        string butlerCommand = "butler push \\\"{0}\\\" {1}/{2}:{3}";
-        result = CommandLineHelper.RunPowershellLine(string.Format(butlerCommand, zippath, ButlerAccount, ButlerGame, GetChannel()));
+        string butlerCommand = "butler push \\\"{0}\\\" {1}/{2}:{3} --userversion {4}";
+        result = CommandLineHelper.RunPowershellLine(string.Format(butlerCommand, zippath, ButlerAccount, ButlerGame, GetChannel(), version));
 
         if (result == 0)
             Debug.Log("Game successfully uploaded to itch.io");
